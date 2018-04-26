@@ -29,3 +29,7 @@
 //     closeOnSelect: false // Close upon selecting a date,
 //   });
 // });
+
+$( document ).ready(function (){
+  $(".dropdown-trigger").dropdown();
+});

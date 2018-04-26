@@ -14,6 +14,15 @@ Rails.application.routes.draw do
   resources :locations
   resources :curriculums
 
+  # Authentication routes
+  resources :sessions
+  resources :users
+  get 'users/new', to: 'users#new', as: :signup
+  get 'user/edit', to: 'users#edit', as: :edit_current_user
+  get 'login', to: 'sessions#new', as: :login
+  get 'logout', to: 'sessions#destroy', as: :logout
+
+
   # Routes for managing camp instructors
   get 'camp_instructors/new', to: 'camp_instructors#new', as: :new_camp_instructor
   post 'camp_instructors', to: 'camp_instructors#create', as: :camp_instructors
