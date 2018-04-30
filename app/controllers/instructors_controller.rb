@@ -1,5 +1,7 @@
 class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
+  authorize_resource
 
   def index
     @instructors = Instructor.all.alphabetical.paginate(:page => params[:page]).per_page(12)
@@ -19,13 +21,23 @@ class InstructorsController < ApplicationController
 
   def create
     @instructor = Instructor.new(instructor_params)
-    if @instructor.save
-      redirect_to instructor_path(@instructor), notice: "#{@instructor.first_name} #{@instructor.last_name} was added to the system."
-    else
+    @user = User.new(user_params)
+    @user.role = "instructor"
+    if !@user.save
+      @instructor.valid?
       render action: 'new'
+    else
+      @instructor.user_id = @user.id
+      if @instructor.save
+        flash[:notice] = "#{@instructor.first_name} #{@instructor.last_name} was added to the system."
+        redirect_to instructor_path(@instructor)
+      else
+        render action: 'new'
+      end
     end
   end
 
+  # Edit this for in place 
   def update
     if @instructor.update(instructor_params)
       redirect_to instructor_path(@instructor), notice: "#{@instructor.first_name} #{@instructor.last_name} was revised in the system."
@@ -35,8 +47,11 @@ class InstructorsController < ApplicationController
   end
 
   def destroy
-    @instructor.destroy
-    redirect_to instructors_url, notice: "#{@instructor.first_name} #{@instructor.last_name} was deleted from the system."
+    if @instructor.destroy
+      redirect_to instructors_url, notice: "#{@instructor.first_name} #{@instructor.last_name} was deleted from the system."
+    else
+      render action: 'show'
+    end
   end
 
   private
@@ -45,6 +60,10 @@ class InstructorsController < ApplicationController
     end
 
     def instructor_params
-      params.require(:instructor).permit(:first_name, :last_name, :bio, :user_id, :email, :phone, :active)
+      params.require(:instructor).permit(:first_name, :last_name, :bio, :user_id, :active)
+    end
+
+    def user_params
+      params.require(:instructor).permit(:active, :username, :password, :password_confirmation, :role, :email, :phone)
     end
 end

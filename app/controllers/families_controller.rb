@@ -1,50 +1,67 @@
-# class InstructorsController < ApplicationController
-#   before_action :set_family, only: [:show, :edit, :update, :destroy]
+class FamiliesController < ApplicationController
+  before_action :set_family, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
+  authorize_resource
 
-#   def index
-#     @families = Family.all.alphabetical.paginate(:page => params[:page]).per_page(12)
-#   end
+  def index
+    @families = Family.all.alphabetical#.paginate(:page => params[:page]).per_page(12)
+  end
 
-#   def show
-#     @past_camps = @instructor.camps.past.chronological
-#     @upcoming_camps = @instructor.camps.upcoming.chronological
-#   end
+  def show
+    # @past_camps = @instructor.camps.past.chronological
+    @students = @family.students.alphabetical
+  end
 
-#   def edit
-#   end
+  def edit
+  end
 
-#   def new
-#     @instructor = Instructor.new
-#   end
+  def new
+    @family = Family.new
+  end
 
-#   def create
-#     @instructor = Instructor.new(instructor_params)
-#     if @instructor.save
-#       redirect_to instructor_path(@instructor), notice: "#{@instructor.first_name} #{@instructor.last_name} was added to the system."
-#     else
-#       render action: 'new'
-#     end
-#   end
+  def create
+    @family = Family.new(family_params)
+    @user = User.new(user_params)
+    @user.role = "parent"
+    if !@user.save
+      @family.valid?
+      render action: 'new'
+    else
+      @family.user_id = @user.id
+      if @family.save
+        flash[:notice] = "#{@family.parent_first_name} #{@family.family_name} was added to the system."
+        redirect_to family_path(@family)
+      else
+        render action: 'new'
+      end
+    end
+  end
 
-#   def update
-#     if @instructor.update(instructor_params)
-#       redirect_to instructor_path(@instructor), notice: "#{@instructor.first_name} #{@instructor.last_name} was revised in the system."
-#     else
-#       render action: 'edit'
-#     end
-#   end
+  # Edit this for in place 
+  def update
+    if @family.update(family_params)
+      redirect_to family_path(@family), notice: "#{@family.parent_first_name} #{@family.family_name} was revised in the system."
+    else
+      render action: 'edit'
+    end
+  end
 
-#   def destroy
-#     @instructor.destroy
-#     redirect_to instructors_url, notice: "#{@instructor.first_name} #{@instructor.last_name} was deleted from the system."
-#   end
+  def destroy
+    if @family.destroy
+      redirect_to families_url, notice: "#{@family.parent_first_name} #{@family.family_name} was deleted from the system."
+    end
+  end
 
-#   private
-#     def set_family
-#       @instructor = Instructor.find(params[:id])
-#     end
+  private
+    def set_family
+      @family = Family.find(params[:id])
+    end
 
-#     def instructor_params
-#       params.require(:instructor).permit(:first_name, :last_name, :bio, :user_id, :email, :phone, :active)
-#     end
-# end
+    def family_params
+      params.require(:family).permit(:family_name, :parent_first_name, :user_id, :active, :username, :password, :password_confirmation, :email, :phone)
+    end
+
+    def user_params
+      params.require(:family).permit(:active, :username, :role, :email, :phone, :password, :password_confirmation)    
+    end
+end

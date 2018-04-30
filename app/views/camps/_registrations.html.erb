@@ -1,0 +1,24 @@
+<div class="card indigo lighten-2">
+  <div class="card-content white-text">
+    <span class="card-title">Registrations</span>
+    <% if @students.empty? %>
+    <p>No students at this time</p>
+    <% else %>
+      <ul>
+        <% @students.each do |s| %>
+          <li>
+            <%= link_to(registration_path(id: registration_id_for(@camp, s)), method: :delete, class: 'remove') do %>
+              x&nbsp;&nbsp;
+            <% end %>
+            <%= link_to s.proper_name, student_path(s) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="card-action">
+    <%= link_to "Add a new student", new_registration_path(camp_id: @camp.id) %>
+    </div>
+  </div>
+</div>
+
+

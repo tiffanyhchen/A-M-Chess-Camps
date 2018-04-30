@@ -1,0 +1,35 @@
+<div class="card indigo lighten-2">
+  <div class="card-content white-text">
+    <span class="card-title">Students</span>
+    <% if students.empty? %>
+    <p>No students at this time</p>
+    <% else %>
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Rating</th>
+        </thead>
+          <% for s in students %>
+            <tr>
+              <td><%= link_to s.name, student_path(s) %></td>
+              <td><%= s.age %></td>
+              <td>&nbsp;<%= s.rating %></td>
+            </tr>
+            <table style="margin-left: 10%; width: 90%">
+              <thead>
+                <th>Camp Name</th>
+                <th>Dates</th>
+              </thead>
+              <% for r in s.registrations %>
+              <tr>
+                <td><%= link_to r.camp.name, camp_path(r.camp) %></td>
+                <td><%= r.camp.start_date.strftime("%m/%d/%y") %></td>
+              </tr>
+              <% end %>
+            </table>
+          <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>

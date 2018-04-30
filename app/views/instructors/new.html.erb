@@ -1,5 +1,5 @@
-<h1>New instructor</h1>
-
-<%= render 'form', instructor: @instructor %>
-
-<%= link_to 'Back', instructors_path %>
+<%= render partial: "partials/form2_structure", locals: {object: @instructor, 
+                                                        type_of_form: "New Instructor",
+                                                        fields1: "instructor_fields",
+                                                        section_2: "User Account",
+                                                        fields2: "user_fields"} %>

@@ -2,6 +2,8 @@ class Family < ApplicationRecord
   include AppHelpers::Deletions
   include AppHelpers::Activeable::InstanceMethods
   extend AppHelpers::Activeable::ClassMethods
+  
+  attr_accessor :username, :password, :password_confirmation, :email, :phone
 
   # relationships
   belongs_to :user
@@ -31,6 +33,7 @@ class Family < ApplicationRecord
     if self.active == false
       terminate_upcoming_registrations
       make_students_inactive
+      errors.add(:base, "#{self.family_name} could not be deleted but was made inactive instead, along with related students and user account.")
     end
   end
 

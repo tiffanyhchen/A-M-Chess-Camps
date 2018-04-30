@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user.role = "instructor" if current_user.role?(:instructor)
     @user.role = "admin" if current_user.role?(:admin)
     if @user.save
-      flash[:notice] = "Successfully added #{@user.proper_name} as a user."
+      flash[:notice] = "Successfully added #{@user.username} as a user."
       redirect_to users_url
     else
       render action: 'new'
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:notice] = "Successfully updated #{@user.proper_name}."
+      flash[:notice] = "Successfully updated #{@user.username}."
       redirect_to users_url
     else
       render action: 'edit'
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      redirect_to users_url, notice: "Successfully removed #{@user.proper_name} from the A & M Chess Camps system."
+      redirect_to users_url, notice: "Successfully removed #{@user.username} from the A & M Chess Camps system."
     else
       render action: 'show'
     end
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :active, :username, :role, :password, :password_confirmation)
+      params.require(:user).permit(:active, :username, :role, :email, :phone, :password, :password_confirmation)
     end
 
 end

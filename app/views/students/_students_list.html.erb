@@ -1,0 +1,27 @@
+<h4>Students</h4>
+
+<table class="striped highlight">
+  <thead>
+    <th>Name</th>
+    <th>Family</th>
+    <th>Date of Birth</th>
+    <th>Age</th>
+    <th>Rating</th>
+    <th>Active</th>
+    <th class="align_center">Options</th>
+  </thead>
+  <% for s in @students %>
+    <tr>
+      <td><%= link_to s.name, student_path(s) %></td>
+      <td><%= link_to s.family.family_name, family_path(s.family) %></td>
+      <td><%= s.date_of_birth %></td>
+      <td><%= s.age %></td>
+      <td>&nbsp;<%= s.rating %></td>
+      <td>&nbsp;<%= s.active %></td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<%= will_paginate @students, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<p>&nbsp;</p>
+<%= render :partial => "partials/add_new_object", locals: {model_name: 'student'} %>

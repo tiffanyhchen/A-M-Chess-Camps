@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :instructors
   resources :locations
   resources :curriculums
+  resources :families
+  resources :students
 
   # Authentication routes
   resources :sessions
@@ -27,4 +29,8 @@ Rails.application.routes.draw do
   get 'camp_instructors/new', to: 'camp_instructors#new', as: :new_camp_instructor
   post 'camp_instructors', to: 'camp_instructors#create', as: :camp_instructors
   delete 'camp_instructors', to: 'camp_instructors#destroy', as: :camp_instructor
+
+  get 'registrations/new', to: 'registrations#new', as: :new_registration
+  post 'registrations', to: 'registrations#create', as: :registrations
+  delete 'registrations', to: 'registrations#destroy', as: :registration
 end

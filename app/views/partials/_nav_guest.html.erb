@@ -1,15 +1,9 @@
-<!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
-  <li><%= link_to "Curriculums", curriculums_path %></li>
-  <li><%= link_to "Camps", camps_path %></li>
-</ul>
-
 <nav id="nav">
-  <div class="container">
+  <div class="nav-wrapper">
     <ul class="right hide-on-med-and-down">
       <li><%= link_to 'About', about_path, :class => "grey-text text-lighten-3" %></li>
-       <!-- Dropdown Trigger -->
-      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Camps</a></li>
+      <li><%= link_to "Curriculums", curriculums_path %></li>
+      <li><%= link_to "Camps", camps_path %></li>
       <li><%= link_to 'Contact Us', contact_path, :class => "grey-text text-lighten-3" %></li>
       <li><%= link_to 'Login', login_path %></li>
     </ul>

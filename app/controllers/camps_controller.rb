@@ -1,5 +1,6 @@
 class CampsController < ApplicationController
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   def index
     @active_camps = Camp.all.active.alphabetical.paginate(:page => params[:active_camps]).per_page(10)
@@ -8,6 +9,7 @@ class CampsController < ApplicationController
 
   def show
     @instructors = @camp.instructors.alphabetical
+    @students = @camp.students.alphabetical
   end
 
   def edit

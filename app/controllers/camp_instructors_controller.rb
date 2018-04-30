@@ -1,4 +1,5 @@
 class CampInstructorsController < ApplicationController
+  authorize_resource
   
   def new
     @camp_instructor   = CampInstructor.new
