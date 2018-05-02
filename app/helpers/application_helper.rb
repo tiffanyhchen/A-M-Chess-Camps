@@ -8,4 +8,14 @@ module ApplicationHelper
     reg = Registration.where(camp_id: camp.id, student_id: student).first
     return reg.id unless reg.nil?
   end
+
+  def instructor_for(user)
+    instructor = Instructor.where(user_id: user).first
+    return instructor.id unless instructor.nil?
+  end
+
+  def family_for(user)
+    family = Family.where(user_id: user).first
+    return family.id unless family.nil?
+  end
 end

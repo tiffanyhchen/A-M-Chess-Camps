@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  include AppHelpers::Cart
+
   def new
   end
   

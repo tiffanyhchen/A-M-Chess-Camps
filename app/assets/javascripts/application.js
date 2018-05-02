@@ -15,6 +15,7 @@
 //= require materialize-sprockets
 //= require materialize-form
 //= require_tree .
+//= require vue
 
 // $( document ).ready(function () {
 //     $('select').material_select();

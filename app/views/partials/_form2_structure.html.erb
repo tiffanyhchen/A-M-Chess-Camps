@@ -3,7 +3,7 @@
     <div class="card">    
       <div class="card-content">
         <span class="card-title"><%= type_of_form %></span>
-        <%= simple_form_for(object) do |f| %>
+        <%= simple_form_for(object, local: true, multipart: true) do |f| %>
           <%= f.error_notification %>
           <div class="row">
             <div class="form-inputs">

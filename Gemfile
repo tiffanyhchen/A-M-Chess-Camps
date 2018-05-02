@@ -38,6 +38,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Get rid of github warning
 gem 'loofah', '2.2.1'
 
+# vue js
+gem 'vuejs-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -74,6 +77,9 @@ gem 'simple_form', '3.5.0'
 
 # authorization gem
 gem 'cancancan'
+
+# carrierwave gem
+gem 'carrierwave'
 
 # Materialize and UI gems
 gem 'materialize-sass', '0.100.2'

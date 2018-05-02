@@ -1,5 +1,8 @@
 <%= f.input :first_name, label_html: { class: 'active' } %>
 <%= f.input :last_name, label_html: { class: 'active' } %>
 <%= f.input :bio, label_html: { class: 'active' } %>
-<!-- picture -->
+<div class="field">
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
+</div>
 <%= f.input :active %>
