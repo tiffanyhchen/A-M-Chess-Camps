@@ -67,7 +67,6 @@ class Ability
       end
 
       can :show, Student do |this_student|
-        #byebug
         my_students = Family.where(user_id: user).first.students.map(&:id)
         my_students.include? this_student.id 
       end
@@ -94,18 +93,14 @@ class Ability
         my_students = Family.where(user_id: user).first.students.map(&:id)
         my_students.include? this_student.id 
       end
-
-      # can :destroy, Registration do |this_registration|  
-      #   my_students = Family.where(user_id: user).first.students.map(&:id)
-      #   my_students.include? this_student.id 
-      # end
       
     else
       can :read, Camp
       can :read, Curriculum
       can :read, Location
 
-      can :manage, User
+      can :create, User
+      can :create, Family
     end
   end
 end

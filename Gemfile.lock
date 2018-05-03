@@ -66,6 +66,8 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chart-js-rails (0.1.4)
+      railties (> 3.1)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
@@ -287,6 +289,7 @@ DEPENDENCIES
   cancancan
   capybara (~> 2.13)
   carrierwave
+  chart-js-rails
   coffee-rails (~> 4.2)
   cucumber-rails (= 1.5.0)
   database_cleaner (= 1.6.2)

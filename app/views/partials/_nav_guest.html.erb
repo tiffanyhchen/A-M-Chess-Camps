@@ -1,10 +1,15 @@
-<nav id="nav">
+<nav>
   <div class="nav-wrapper">
-    <ul class="right hide-on-med-and-down">
-      <li><%= link_to 'About', about_path, :class => "grey-text text-lighten-3" %></li>
-      <li><%= link_to "Curriculums", curriculums_path %></li>
-      <li><%= link_to "Camps", camps_path %></li>
-      <li><%= link_to 'Contact Us', contact_path, :class => "grey-text text-lighten-3" %></li>
+    <ul class="left">
+      <li><%= link_to 'a&m', home_path, class: "brand-logo" %></li>
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <span id="center-nav">
+        <li><%= link_to 'About', about_path %></li>
+        <li><%= link_to "Curriculums", curriculums_path %></li>
+        <li><%= link_to "Camps", camps_path %></li>
+        <li><%= link_to 'Contact Us', contact_path %></li>
+      </span>
       <li><%= link_to 'Login', login_path %></li>
       <li><%= link_to 'Sign up', new_family_path %></li>
     </ul>

@@ -1,0 +1,33 @@
+<section class="hero">
+  <div class="hero-inner">
+      <h1>Sign up today!</h1>
+      <%= link_to "see camps", camps_path, class: "waves-effect waves-light btn" %>
+  </div>
+</section>
+
+<div class="description">
+  <span class="description-title">a love of the game</span>
+  <p>The A&M Chess Camp (named after the founders, Alex and Mark Heimann) is one of the premiere chess camps for youth this side of the Mississippi. Our instructors have years of experience playing and love to share their wisdom and enthusiasm for the game with students of all levels.</p>
+</div>
+
+<section class="hero" id="hero2">
+  <div class="hero-inner">
+    <div class="description">
+      <h1>Curriculums</h1>
+      <p>We offer curriculums for every level! Prospective parents and students should feel free to browse through our catalogue of curriculums. Feel free to contact us with any questions you may have.</p>
+      <%= link_to "see curriculums", curriculums_path, class: "waves-effect waves-light btn" %>
+    </div>
+  </div>
+</section>
+
+<div class="description">
+  <span class="description-title">any questions?</span>
+  <p>Any questions, concerns, or comments about the camps, the curriculums, or anything at all? Drop us a line <%= mail_to("admin@example.com", "here", encode: "javascript") %>.</p>
+</div>
+
+<style>
+  .container{
+    width: 100%;
+    margin: 0;
+  }
+</style>

@@ -1,17 +1,22 @@
-<footer class="page-footer">
+<footer class="page-footer" id="footer" class="center-align">
   <div class="container">
     <div class="row">
-      <%= link_to 'Home', home_path, :class => "grey-text text-lighten-3" %>&nbsp;&nbsp;::&nbsp;&nbsp;
-      <%= link_to 'About the Chess Camp', about_path, :class => "grey-text text-lighten-3" %>&nbsp;&nbsp;::&nbsp;&nbsp;
-      <%= link_to 'Contact Us', contact_path, :class => "grey-text text-lighten-3" %>&nbsp;&nbsp;::&nbsp;&nbsp;
-      <%= link_to 'Privacy Policy', privacy_path, :class => "grey-text text-lighten-3" %>
-      <br /><br />
-    </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container">
-    Webmaster: <%= mail_to("profh@cmu.edu", "Klingon Code Warrior", encode: "javascript") %> 
-    &nbsp;&nbsp;&copy 2018
+      <div class="col s7 push-s5">
+        <div id="copy">
+          <h5>Website not working?</h5>
+          <br/>
+          Contact the <%= mail_to("tiffanychen@cmu.edu", "webmaster", encode: "javascript") %>. 
+        </div>
+      </div>
+      <div class="col s5 pull-s7">
+        <h5>Learn more</h5>
+        <ul>
+          <%= link_to 'Home', home_path %> <br/>
+          <%= link_to 'About Us', about_path %> <br/>
+          <%= link_to 'Contact Us', contact_path %> <br/>
+          <%= link_to 'Privacy Policy', privacy_path %> <br/>
+        </ul>
+      </div>
     </div>
   </div>
 </footer>

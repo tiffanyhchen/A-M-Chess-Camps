@@ -22,7 +22,8 @@ class Family < ApplicationRecord
   delegate :username, to: :user, allow_nil: true
 
   # callbacks
-  before_destroy do 
+  before_destroy do
+    #if you need to: add line to deactivate the family
     cannot_destroy_object()
   end
 
@@ -33,7 +34,6 @@ class Family < ApplicationRecord
     if self.active == false
       terminate_upcoming_registrations
       make_students_inactive
-      errors.add(:base, "#{self.family_name} could not be deleted but was made inactive instead, along with related students and user account.")
     end
   end
 

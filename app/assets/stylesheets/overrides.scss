@@ -1,3 +1,115 @@
+body{
+  font-family: 'Sofia Pro', sans-serif;
+  color: #000000;
+}
+
+/********** NAV ********/
+nav{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.brand-logo{
+  font-weight: 600;
+}
+
+nav .brand-logo{
+  color: #000000;
+}
+
+nav ul a{
+  color: #F7A072;
+  font-weight: 500;
+}
+
+nav #center-nav li a{
+  color: #0FA3B1;
+}
+
+/********** INDEX PAGE ********/
+body {
+  margin: 0;
+}
+
+.hero {
+  /* Sizing */
+  height: 100vh;
+  width: 100vw;
+   /* Flexbox stuff */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Text styles */
+  text-align: center;
+
+   /* Background styles */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35),rgba(0, 0, 0, 0.35)), url(https://static1.squarespace.com/static/54b96861e4b0d1f230ccbf00/598e92e4e58c6284b28f57b0/598e92e58419c2158fd62096/1502515959501/OCA_OSOTA+2017+Summer+Chess+Camp+25.jpg?format=2500w);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hero h1 {
+  /* Margins */
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: #ffffff;
+  font-size: 5em;
+}
+
+.hero .btn {
+  /* Padding and margins */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.description{
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6em;
+  margin-bottom: 6em;
+}
+
+.description-title{
+  font-size: 3em;
+  font-family: 'Playfair Display', serif;
+  color: #F7A072;
+}
+
+#hero2{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35),rgba(0, 0, 0, 0.35)), url(https://static1.squarespace.com/static/54b96861e4b0d1f230ccbf00/598e92e4e58c6284b28f57b0/598e9318f43b5572af33a506/1502516001341/OCA_OSOTA+2017+Summer+Chess+Camp+33.jpg?format=2500w);
+}
+
+.hero p{
+  color: #ffffff;
+  font-size: 1em;
+  text-align: left;
+}
+
+/********** BUTTONS ********/
+.btn, .btn-large{
+  background-color: #0FA3B1;
+}
+
+/********** FOOTERS ********/
+.page-footer{
+  background-color:#eaebed;
+  padding: 4em;
+  color: #00000;
+  bottom: 0; 
+}
+
+.page-footer h5{
+  font-family: 'Playfair Display', serif;
+  color: #F7A072;
+}
+
+.page-footer a{
+  color: #0FA3B1;
+}
+
 /********** FORMS ********/
 .switch label input[type=checkbox]:checked + .lever {
   background-color: #2979ff;
