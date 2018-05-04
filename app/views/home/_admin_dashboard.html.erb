@@ -1,39 +1,139 @@
-<canvas id="myChart" width="400" height="400"></canvas>
+<h2>Welcome back, <%= current_user.username %>!</h2>
+<div class="dashboard-charts">
+    <canvas id="reg-vs-time"></canvas>
+    <canvas id="level-breakdown"></canvas>
+    <canvas id="popular-camps"></canvas>
+</div>
+
+
 <script>
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
+var ctx = document.getElementById("reg-vs-time").getContext('2d');
+var chart1 = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June"],
+        datasets: [{
+            label: "This Year",
+            data: [3, 6, 24, 19, 37, 15],
+            backgroundColor:'rgba(15, 163, 177, 0.2)',
+            borderColor: 'rgba(15, 163, 177, 1)'
+        },{
+            label: "Last Year",
+            data: [15, 3, 16, 24, 4, 6],
+            borderDash: [5, 5],
+            borderColor: 'rgba(247, 160, 114, 1)',
+            fill: false
+        }]
+    },
+     options: {
+        responsive: true,
+        legend: {
+            position: 'top',
+            labels: {
+                fontFamily: "'Sofia Pro', sans-serif"
+            }
+        },
+        title: {
+            display: true,
+            text: 'Registrations in the Last Few Months',
+            fontSize: 20,
+            fontFamily: "'Sofia Pro', sans-serif",
+            fontStyle: '500'
+        },
+        scales: {
+            yAxes: [
+                {
+                    ticks: 
+                    {
+                        fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'
+                    },
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: '# of Registrations',
+                        fontFamily: "'Sofia Pro', sans-serif"
+                    }
+                }
+            ],
+            xAxes: [
+                { 
+                    ticks: 
+                    {
+                        fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'
+                    },
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month',
+                        fontFamily: "'Sofia Pro', sans-serif"
+                    }
+                }
+            ]
+        }
+    }
+});
+
+var popcamps = document.getElementById("popular-camps").getContext('2d');
+var chart2 = new Chart(popcamps, {
     type: 'bar',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["Principles of Chess", "Mastering Chess Tactics", "The Tactics of Mikhail Tal", "Nimzo-Indian Defense", "Endgame Principles"],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [32, 74, 38, 13, 45],
+            backgroundColor:'rgba(15, 163, 177, 1)',
+            borderColor: 'rgba(15, 163, 177, 1)'
+        }]
+    },
+     options: {
+        responsive: true,
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: 'Most Popular Curriculums',
+            fontSize: 20,
+            fontFamily: "'Sofia Pro', sans-serif",
+            fontStyle: '500'
+        },
+        scales: {
+            yAxes: [{ticks: {fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'}}],
+            xAxes: [{ticks: {fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'}}]
+        }
+    }
+});
+
+var levelbreakdwon = document.getElementById("level-breakdown").getContext('2d');
+var chart3 = new Chart(levelbreakdwon, {
+    type: 'doughnut',
+    data: {
+        labels: ["Principles of Chess", "Mastering Chess Tactics", "The Tactics of Mikhail Tal", "Nimzo-Indian Defense", "Endgame Principles"],
+        datasets: [{
+            data: [.2, .2, .2, .2, .2],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
+                'rgba(15, 163, 177, 1)',
+                'rgba(247, 160, 114, 1)',
+                'rgba(104, 216, 214, 1)',
+                'rgba(188, 196, 219, 1)',
+                'rgba(68, 69, 69, 1)',
+            ]
         }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
+        responsive: true,
+        legend: {
+            position: 'right',
+        },
+        title: {
+            display: true,
+            text: 'Breakdown of Students by Level',
+            fontSize: 20,
+            fontFamily: "'Sofia Pro', sans-serif",
+            fontStyle: '500'
+        },
+        animation: {
+            animateScale: true,
+            animateRotate: true
         }
     }
 });

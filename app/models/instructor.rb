@@ -19,9 +19,9 @@ class Instructor < ApplicationRecord
   # class methods
   def self.for_camp(camp)
     # the 'instructive way'... (which I told you if you asked me for help)
-    CampInstructor.where(camp_id: camp.id).map{ |ci| ci.instructor }
+    # CampInstructor.where(camp_id: camp.id).map{ |ci| ci.instructor }
     # the easy way... 
-    # camp.instructors
+    camp.instructors
   end
 
   # delegates

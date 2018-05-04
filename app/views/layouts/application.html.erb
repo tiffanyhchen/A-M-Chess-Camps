@@ -6,7 +6,7 @@
 
     <title>A&M Chess Camp - <%= controller.controller_name.capitalize %></title>
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
+    <%#= javascript_include_tag "application" %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
     <%= csrf_meta_tags %>
@@ -34,5 +34,6 @@
         <%= render partial: 'partials/footer' %>
       </div>
     </footer>
+    <%= javascript_include_tag "application" %>
   </body>
 </html>

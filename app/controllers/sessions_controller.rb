@@ -9,6 +9,10 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:username], params[:password])
     if user
       session[:user_id] = user.id
+      if session[:role] = "parent"
+        destroy_cart
+        create_cart
+      end
       redirect_to home_path, notice: "Logged in!"
     else
       flash.now.alert = "Username and/or password is invalid"

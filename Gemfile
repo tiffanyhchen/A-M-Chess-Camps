@@ -41,6 +41,7 @@ gem 'loofah', '2.2.1'
 # vue js
 gem 'vuejs-rails'
 
+# chart js gem
 gem 'chart-js-rails'
 
 group :development, :test do

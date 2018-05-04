@@ -1,5 +1,5 @@
 class CampsController < ApplicationController
-  before_action :set_camp, only: [:show, :edit, :update, :destroy]
+  before_action :set_camp, only: [:show, :edit, :update, :destroy, :instructors]
   authorize_resource
 
   def index
@@ -35,6 +35,10 @@ class CampsController < ApplicationController
     else
       render action: 'edit'
     end
+  end
+
+  def instructors
+    @instructors = Instructor.for_camp(@camp).alphabetical
   end
 
   def destroy
