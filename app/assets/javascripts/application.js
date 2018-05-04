@@ -2,9 +2,10 @@
 //= require rails-ujs
 //= require materialize-sprockets
 //= require materialize-form
+//= require Chart.min
 //= require vue
 //= require_tree .
-//= require Chart.min
+
 
 // $( document ).ready(function () {
 //     $('select').material_select();

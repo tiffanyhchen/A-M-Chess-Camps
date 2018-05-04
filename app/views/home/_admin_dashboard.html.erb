@@ -1,11 +1,10 @@
 <h2>Welcome back, <%= current_user.username %>!</h2>
-<div class="dashboard-charts">
-    <canvas id="reg-vs-time"></canvas>
-    <canvas id="level-breakdown"></canvas>
-    <canvas id="popular-camps"></canvas>
-</div>
 
+<canvas id="reg-vs-time"></canvas>
+<canvas id="level-breakdown"></canvas>
+<canvas id="popular-camps"></canvas>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
 var ctx = document.getElementById("reg-vs-time").getContext('2d');
 var chart1 = new Chart(ctx, {
