@@ -18,13 +18,6 @@ class CampInstructorsController < ApplicationController
       render action: 'new', locals: { camp: @camp, other_instructors: @other_instructors }
     end
   end
- 
-  # def destroy
-  #   @camp_instructor = CampInstructor.find(params[:id])
-  #   @camp_instructor.destroy
-  #   flash[:notice] = "Successfully removed this instructor."
-  #   redirect_to camp_path(@camp_instructor.camp)
-  # end
 
   def destroy
     # @camp_instructor = CampInstructor.find(params[:id])

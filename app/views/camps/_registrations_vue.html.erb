@@ -1,0 +1,36 @@
+<div id="signups">
+  <%= hidden_field_tag "camp_id", @camp.id %>
+  <div class="card indigo lighten-2">
+    <div class="card-content white-text">
+      <span class="card-title">Registrations</span>
+      <% if @camp.students.empty? %>
+        <p>No students at this time</p>
+      <% else %>
+        <ul is='student-row' 
+            v-for="student in students" 
+            v-bind:student="student"
+            class="no_bullet">  
+        </ul>
+      <% end %>
+      <div class="card-action">
+      <%# link_to "Add a new instructor", "#" %>
+      <%= link_to "Add a new student", "#", {%s(v-on:click) => "switch_modal()"} %>
+      </div>
+    </div>
+  </div>
+
+  <div v-if="modal_open">
+    <new-student-form></new-student-form>
+  </div>
+
+
+</div>  <!-- End of div#assignments -->
+
+
+
+
+<!--  much easier to include this complicated template here 
+      rather than in the js file (IMO) -->
+<script type="text/x-template" id="registration-form-template">
+  <%= render "registration_form_template" %>
+</script>

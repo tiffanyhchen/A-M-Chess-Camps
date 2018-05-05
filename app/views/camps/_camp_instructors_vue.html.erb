@@ -4,7 +4,7 @@
     <div class="card-content white-text">
       <span class="card-title">Camp Instructors</span>
       <% if @camp.instructors.empty? %>
-      <p>No instructors at this time</p>
+        <p>No instructors at this time</p>
       <% else %>
         <ul is='instructor-row' 
             v-for="instructor in instructors" 
