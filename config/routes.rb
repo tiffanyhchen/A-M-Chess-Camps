@@ -34,11 +34,13 @@ Rails.application.routes.draw do
   post 'camps/:id/students', to: 'registrations#create', as: :create_student
   delete 'camps/:id/students/:student_id', to: 'registrations#destroy', as: :remove_student
 
+
+
   # get 'registrations/new', to: 'registrations#new', as: :new_registration
   # post 'registrations', to: 'registrations#create', as: :registrations
   # delete 'registrations', to: 'registrations#destroy', as: :registration
 
-  # get "view_cart" => "home#view_cart", as: :view_cart
+  get "view_cart" => "carts#view_cart", as: :view_cart
   #post "registrations/add_to_cart/:id" => "items#add_to_cart", as: :add_to_cart
   # post "items/remove_one_from_cart/:id" => "items#remove_one_from_cart", as: :remove_one_from_cart
   # post "items/delete_from_cart/:id" => "items#delete_from_cart", as: :delete_from_cart

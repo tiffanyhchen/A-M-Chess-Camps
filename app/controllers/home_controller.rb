@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  include AppHelpers::Cart
+
   def index
   end
 
@@ -10,5 +12,4 @@ class HomeController < ApplicationController
 
   def privacy
   end
-  
 end

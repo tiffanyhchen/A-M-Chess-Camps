@@ -1,8 +1,47 @@
-<h2>Welcome back, <%= current_user.username %>!</h2>
-
-<canvas id="reg-vs-time"></canvas>
-<canvas id="level-breakdown"></canvas>
-<canvas id="popular-camps"></canvas>
+<h4>Welcome back, <%= current_user.username %>!</h4>
+<div id="dashboard-charts">
+    <div class="row">
+        <div class="col s8">
+            <div class="card">
+                <div class="card-content white-text">
+                    <canvas id="reg-vs-time"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Checklist</span>
+                        <ul class="collection">
+        <li class="collection-item"><div>Approve timecards<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+        <li class="collection-item"><div>Assign instructors<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+        <li class="collection-item"><div>Send out emails to families<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+        <li class="collection-item"><div>Contact facilities managers<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+        <li class="collection-item"><div>Email instructors<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+      </ul>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s8">
+            <div class="card">
+                <div class="card-content">
+                    <canvas id="popular-camps"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Student Levels</span>
+                    <canvas id="level-breakdown"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
@@ -97,7 +136,7 @@ var chart2 = new Chart(popcamps, {
         },
         scales: {
             yAxes: [{ticks: {fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'}}],
-            xAxes: [{ticks: {fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'}}]
+            xAxes: [{display: false}]
         }
     }
 });
@@ -106,9 +145,9 @@ var levelbreakdwon = document.getElementById("level-breakdown").getContext('2d')
 var chart3 = new Chart(levelbreakdwon, {
     type: 'doughnut',
     data: {
-        labels: ["Principles of Chess", "Mastering Chess Tactics", "The Tactics of Mikhail Tal", "Nimzo-Indian Defense", "Endgame Principles"],
+        labels: ["Class J", "Class H-I", "Class F-G", "Class D-E", "Class A-C", "Expert +"],
         datasets: [{
-            data: [.2, .2, .2, .2, .2],
+            data: [.31, .40, .10, .5, .12, .2],
             backgroundColor: [
                 'rgba(15, 163, 177, 1)',
                 'rgba(247, 160, 114, 1)',
@@ -121,14 +160,10 @@ var chart3 = new Chart(levelbreakdwon, {
     options: {
         responsive: true,
         legend: {
-            position: 'right',
+            position: false,
         },
         title: {
-            display: true,
-            text: 'Breakdown of Students by Level',
-            fontSize: 20,
-            fontFamily: "'Sofia Pro', sans-serif",
-            fontStyle: '500'
+            display: false
         },
         animation: {
             animateScale: true,

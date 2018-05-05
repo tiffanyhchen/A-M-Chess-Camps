@@ -1,6 +1,4 @@
 <div id="form-template">
-
-  <!-- create an empty camp instructor object to work with -->
   <% @registration = Registration.new %>
   <!-- now the form template itself -->
   <div class="row">
@@ -10,7 +8,12 @@
         <%= f.error_notification %>
         <div class="row">
           <div class="form-inputs">
-            <%= f.input :student_id, collection: Student.active.alphabetical.to_a, include_blank: true %>
+            <% if logged_in? && ( current_user.role?(:admin) ) %>
+              <%= f.input :student_id, collection: Student.active.alphabetical.to_a, include_blank: true %>
+            <% elsif current_user.role?(:parent) %>
+              <%= f.input :student_id, collection: Family.where(user_id: current_user).first.students.active.alphabetical.to_a, include_blank: true %>
+            <% end %>
+
             <%= f.input :camp_id, as: :hidden, input_html: { value: @camp.id } %>
           </div>
         </div>

@@ -55,6 +55,12 @@ class Ability
       can :read, Curriculum
       can :read, Camp
       can :read, Location
+      can :read, Instructor
+      can :show, Instructor
+      can :create, Student
+
+      can :instructors, Camp
+      can :students, Camp
 
       # they can read their own profile
       can :show, User do |u|  

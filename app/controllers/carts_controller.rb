@@ -17,7 +17,7 @@ class CartsController < ApplicationController
     end
   end
 
-  def show
+  def view_cart
     @cart_items = get_array_of_ids_for_generating_registrations
     @registration_total = calculate_total_cart_registration_cost
   end

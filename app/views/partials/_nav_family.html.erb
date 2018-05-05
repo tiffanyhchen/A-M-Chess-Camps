@@ -9,6 +9,11 @@
       <li><%= link_to current_user.username, edit_user_path(current_user) %></li>
       <li><%= link_to "My Profile", edit_family_path(family_for(current_user)) %></li>
       <li><%= link_to 'Logout', logout_path %></li>
+      <li>
+        <%= link_to view_cart_path do %>
+          <i class="material-icons left">shopping_cart</i>Cart
+        <% end %>
+      </li>
     </ul>
   </div>
 </nav>

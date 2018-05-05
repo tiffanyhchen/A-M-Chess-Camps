@@ -21,7 +21,9 @@
         <td><%= link_to curriculum.name, curriculum %></td>
         <td><%= curriculum.min_rating == 0 ? "Unrated" : curriculum.min_rating %> - <%= curriculum.max_rating %></td>
         <td><%= Camp.for_curriculum(curriculum.id).size %></td>
-        <td><%= link_to 'Edit', edit_curriculum_path(curriculum), :class=>"btn waves-effect waves-light blue" %></td>
+        <% if logged_in? && ( current_user.role?(:admin) ) %>
+          <td><%= link_to 'Edit', edit_curriculum_path(curriculum), :class=>"btn waves-effect waves-light blue" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +31,6 @@
 
     <% end %>
 
-<%= link_to 'New curriculum', new_curriculum_path %>
+<% if logged_in? && ( current_user.role?(:admin) ) %>
+  <%= link_to 'New curriculum', new_curriculum_path, :class=>"btn waves-effect waves-light" %>
+<% end %>
