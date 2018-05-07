@@ -14,6 +14,9 @@
     <p>
       The camp syllabi and course content that students learn.
     </p>
+    <% if logged_in? && ( current_user.role?(:admin) ) %>
+      <h6><%= link_to '+ NEW CURRICULUM', new_curriculum_path %></h6>
+    <% end %>
   </div>
   <div class="col s8">
       <% if @curriculums.empty? %>
@@ -40,7 +43,7 @@
               <% if logged_in? && ( current_user.role?(:admin) ) %>
               <td><%= Camp.for_curriculum(curriculum.id).size %></td>
 
-                <td><%= link_to 'Edit', edit_curriculum_path(curriculum), :class=>"btn waves-effect waves-light blue" %></td>
+                <td><%= link_to 'Edit', edit_curriculum_path(curriculum), :class=>"btn waves-effect waves-light" %></td>
               <% end %>
             </tr>
           <% end %>
@@ -49,8 +52,4 @@
 
     <% end %>
   </div>
-
-  <% if logged_in? && ( current_user.role?(:admin) ) %>
-    <%= link_to 'New curriculum', new_curriculum_path, :class=>"btn waves-effect waves-light" %>
-  <% end %>
 </div>

@@ -1,6 +1,8 @@
-<h1>Editing Curriculum</h1>
-
-<%= render 'form', curriculum: @curriculum %>
-
-<%= link_to 'Show', @curriculum %> |
-<%= link_to 'Back', curriculums_path %>
+<div class="body-content">
+  <div class="row">
+    <%= render :partial => "partials/back_button", locals: {model_name: "curriculum", object: @curriculum} %>
+  </div>
+  <h3>Editing Curriculum</h3> 
+  <%= link_to 'Show original', @curriculum %><br/><br/>
+  <%= render 'form', curriculum: @curriculum %>
+</div>

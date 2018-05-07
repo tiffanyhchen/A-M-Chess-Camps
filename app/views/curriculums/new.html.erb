@@ -1,5 +1,8 @@
-<h1>New curriculum</h1>
+<div class="body-content">
+  <div class="row">
+    <%= render :partial => "partials/back_button", locals: {model_name: "curriculum", object: @curriculum} %>
+  </div>
+  <h3>New curriculum</h3>
 
-<%= render 'form', curriculum: @curriculum %>
-
-<%= link_to 'Back', curriculums_path %>
+  <%= render 'form', curriculum: @curriculum %>
+</div>

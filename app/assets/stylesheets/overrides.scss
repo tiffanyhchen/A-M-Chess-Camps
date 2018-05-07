@@ -16,7 +16,7 @@ a{
 }
 
 .back-button{
-  color: #F7A072;
+  color: #a6a6a6;
 }
 
 h6{
@@ -234,6 +234,21 @@ li .form-inline{
   background-color: #0FA3B1;
 }
 
+.btn:hover{
+  background-color: #a6a6a6;
+  color: #fff;
+}
+
+.btn-alert {
+  background-color: #F7A072;
+  color: #fff;
+}
+
+.btn-alert:hover {
+  background-color: #a6a6a6;
+  color: #fff;
+}
+
 /********** FOOTERS ********/
 .page-footer{
   background-color:#eaebed;
@@ -351,14 +366,13 @@ h3{
   color: #b71c1c;
 }
 
-/********** BUTTONS ********/
-.btn-alert {
-  background-color: #c62828;
-  color: #fff;
+/********** SWITCHES ********/
+.switch label input[type=checkbox]:checked+.lever {
+  background-color: #F7A072;
 }
-.btn-alert:hover {
-  background-color: #e53935;
-  color: #fff;
+
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: #F7A072;
 }
 
 .alert-box {
