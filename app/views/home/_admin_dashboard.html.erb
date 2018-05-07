@@ -158,11 +158,15 @@
           <div class="col s4">
             <div class="card">
               <div class="card-content">
-                <span class="card-title">Curriculum Enrollment Rates</span>
-                  <% @enrollment_rates.each_with_index do |c, index| %>
-                    <div class="progress">
-                      <div class="determinate" id="progress<%= index +1 %>" style="width: <%= number_to_percentage(c * 100, precision: 0) %>;"></div>
-                    </div> <%= number_to_percentage(c * 100, precision: 0) %>
+                <span class="card-title">Upcoming Camp Enrollment</span>
+                  <% @enrollment_rates.each do |key, val| %>
+                    <div class="progress-section">
+                      <div class="progress">
+                        <div class="determinate" style="width: <%= number_to_percentage(val * 100, precision: 0) %>;"></div>
+                      </div> 
+                      <span class="right"><%= number_to_percentage(val * 100, precision: 0) %></span>
+                      <%= link_to key.name, key %>
+                    </div>
                   <% end %>
               </div>
             </div>

@@ -7,7 +7,16 @@
     <title>A&M Chess Camp - <%= controller.controller_name.capitalize %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
-    <link rel="stylesheet" href="https://use.typekit.net/ddc7dbc.css">
+    <script type="text/javascript">
+    (function() {
+        var trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = 'https://easy.myfonts.net/v2/js?sid=210689(font-family=Sofia+Pro+UltraLight)&sid=210694(font-family=Sofia+Pro+Medium)&sid=210696(font-family=Sofia+Pro+SemiBold)&sid=210699(font-family=Sofia+Pro)&key=wis3e2OWkk';
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
     <%= csrf_meta_tags %>
   </head>

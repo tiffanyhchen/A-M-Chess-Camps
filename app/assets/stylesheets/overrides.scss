@@ -285,6 +285,22 @@ li .form-inline{
   font-size: 0.9em;
 }
 
+.progress{
+  height: 6px;
+  background-color: #cccccc;
+  opacity: 1;
+}
+
+.progress .determinate{
+  background-color: #68d8d6;
+  opacity: 1;
+}
+
+.progress-section{
+  margin-top: 5%;
+  margin-bottom: 6.75%;
+}
+
 /********** INDEX PAGES FOR MODELS ********/
 h2{
   color: white;

@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def index
     # admin dashboard
-    if current_user.role?(:admin)
+    if logged_in? && current_user.role?(:admin)
       # WILL REFACTOR IF TIME ALLOWS
       @curriculums = Curriculum.all.alphabetical.map{|c| c.name}.to_a
       @curriculums_camps = Curriculum.all.alphabetical.map{|c| c.camps.size}.to_a
@@ -44,7 +44,12 @@ class HomeController < ApplicationController
 
       @recent_registrations = Registration.last(5).reverse
 
-      @enrollment_rates = Camp.upcoming.limit(5).map{|c| c.enrollment.to_f / c.max_students}
+      
+      # @enrollment_rates = Camp.upcoming.limit(5).map{|c| c.enrollment.to_f / c.max_students}
+      @enrollment_rates = Hash.new(0)
+      Camp.upcoming.limit(5).each do |c|
+        @enrollment_rates[c] = c.enrollment.to_f / c.max_students
+      end
 
     end
 
