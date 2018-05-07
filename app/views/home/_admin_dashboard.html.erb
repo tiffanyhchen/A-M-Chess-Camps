@@ -5,11 +5,13 @@
           <div class="col s3">
             <div class="card">
                 <div class="card-content">
-                  <div class="row">
-                      <i class="material-icons medium">attach_money</i>
-                      <h6><%= @revenue.round %></h6>
-                      <div class="card-details">
-                        Total Revenue
+                  <div class="row box-panel">
+                      <i class="material-icons medium box-icon" style="color: #0FA3B1;">attach_money</i>
+                      <div class="box-content">
+                        <h6><%= @revenue.round %></h6>
+                        <div class="card-details">
+                          revenue
+                        </div>
                       </div>                  
                   </div>
                 </div>
@@ -18,35 +20,45 @@
           <div class="col s3">
             <div class="card">
               <div class="card-content">
-                  <div class="col s1">
-                    <i class="material-icons">attach_money</i>
-                  </div>
-                  <div class="col s2">
-                    <h6>Registrations</h6>
+                <div class="row box-panel">
+                  <i class="material-icons medium box-icon" style="color: #f7a072;">assignment</i>
+                  <div class="box-content">
+                    <h6><%= @registrations_count %></h6>
                     <div class="card-details">
-                      <%= @registrations_count %>
+                      registrations
                     </div>
-                  </div>
+                  </div> 
+                </div>
               </div>
             </div>
           </div>
           <div class="col s3">
             <div class="card">
               <div class="card-content">
-                  <h6>Students</h6>
-                  <div class="card-details">
-                    <%= @students_count %>
-                  </div>
+                <div class="row box-panel">
+                  <i class="material-icons medium box-icon" style="color: #68d8d6;">assignment_ind</i>
+                  <div class="box-content">
+                    <h6><%= @students_count %></h6>
+                    <div class="card-details">
+                      students
+                    </div>
+                  </div> 
+                </div>
               </div>
             </div>
           </div>
           <div class="col s3">
             <div class="card">
               <div class="card-content">
-                  <h6>Full Camps</h6>
-                  <div class="card-details">
-                    <%= @full_camps %> / <%= @all_camps %>
-                  </div>
+                <div class="row box-panel">
+                  <i class="material-icons medium box-icon" style="color: #bcc4db;">group</i>
+                  <div class="box-content">
+                    <h6><%= @full_camps %> / <%= @all_camps %></h6>
+                    <div class="card-details">
+                      camps full
+                    </div>
+                  </div> 
+                </div>
               </div>
             </div>
           </div>
@@ -58,23 +70,39 @@
         <div class="row">
             <div class="col s8">
                 <div class="card">
-                    <div class="card-content white-text">
-                        <canvas id="curr-vs-camps"></canvas>
-                    </div>
+                  <div class="card-content">
+                    <span class="card-title">Most Used Curriculums</span>
+                      <canvas id="curr-vs-camps"></canvas>
+                  </div>
                 </div>
             </div>
             <div class="col s4">
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title">Checklist</span>
-                            <ul class="collection">
-            <li class="collection-item"><div>Approve timecards<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-            <li class="collection-item"><div>Assign instructors<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-            <li class="collection-item"><div>Send out emails to families<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-            <li class="collection-item"><div>Contact facilities managers<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-            <li class="collection-item"><div>Email instructors<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-          </ul>
-                    
+                         <form action="#" id="checklist">
+                          <p>
+                            <input type="checkbox" id="box1" />
+                            <label for="box1">Approve timecards</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" id="box2" />
+                            <label for="box2">Prepare supplies for students</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" id="box3" />
+                            <label for="box3">Contact parents of students</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" id="box4" />
+                            <label for="box4">Assign instructors</label>
+                          </p>
+                          <p>
+                            <input type="checkbox" id="box4" />
+                            <label for="box4">Advertise through schools</label>
+                          </p>
+                          <input type="text" placeholder="Task name"/>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -94,21 +122,51 @@
             </div> 38%
         </div> -->
         <div class="row">
-            <div class="col s8">
-                <div class="card">
-                    <div class="card-content">
-                        <canvas id="popular-camps"></canvas>
-                    </div>
-                </div>
+          <div class="col s4">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Recent Registrations</span>
+                <table id="recent-registrations">
+                  <thead>
+                    <tr>
+                      <th>Student</th>
+                      <th>Camp</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @recent_registrations.each do |r| %>
+                      <tr>
+                        <td><%= link_to r.student.name, r.student %></td>
+                        <td><%= link_to r.camp.name, r.camp %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="col s4">
-                <div class="card">
-                    <!-- <div class="card-content">
-                        <span class="card-title">Student Levels</span>
-                        <canvas id="level-breakdown"></canvas>
-                    </div> -->
-                </div>
+          </div>
+          <div class="col s4">
+              <div class="card">
+                  <div class="card-content">
+                    USCF Rating Classes
+                    <span class="card-title">Distribution of Student Ratings</span>
+                      <canvas id="level-dist" style="margin-bottom: 12%;"></canvas>
+                  </div>
+              </div>
+          </div>
+          <div class="col s4">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Curriculum Enrollment Rates</span>
+                  <% @enrollment_rates.each_with_index do |c, index| %>
+                    <div class="progress">
+                      <div class="determinate" id="progress<%= index +1 %>" style="width: <%= number_to_percentage(c * 100, precision: 0) %>;"></div>
+                    </div> <%= number_to_percentage(c * 100, precision: 0) %>
+                  <% end %>
+              </div>
             </div>
+          </div>
         </div>
     </div>
 </div>
@@ -142,27 +200,23 @@ var chart1 = new Chart(ctx, {
                 {
                     ticks: 
                     {
-                        fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'
+                        fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#a6a6a6', fontStyle: '400'
                     },
                     display: true,
                     scaleLabel: {
                         display: true,
                         labelString: '# of Camps',
-                        fontFamily: "'Sofia Pro', sans-serif"
+                        fontFamily: "'Sofia Pro', sans-serif",
+                        fontColor: '#a6a6a6', 
+                        fontStyle: '400'
                     }
                 }
             ],
             xAxes: [
                 { 
-                    ticks: 
-                    {
-                        fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'
-                    },
                     display: false,
                     scaleLabel: {
                         display: false,
-                        labelString: 'Curriculums',
-                        fontFamily: "'Sofia Pro', sans-serif"
                     }
                 }
             ]
@@ -170,64 +224,49 @@ var chart1 = new Chart(ctx, {
     }
 });
 
-// var popcamps = document.getElementById("popular-camps").getContext('2d');
-// var chart2 = new Chart(popcamps, {
-//     type: 'bar',
-//     data: {
-//         labels: <%= @curriculums %>,
-//         datasets: [{
-//             data: <%= @curriculums_registrations %>,
-//             backgroundColor:'rgba(15, 163, 177, 1)',
-//             borderColor: 'rgba(15, 163, 177, 1)'
-//         }]
-//     },
-//      options: {
-//         responsive: true,
-//         legend: {
-//             display: false
-//         },
-//         title: {
-//             display: true,
-//             text: 'Most Popular Curriculums',
-//             fontSize: 20,
-//             fontFamily: "'Sofia Pro', sans-serif",
-//             fontStyle: '500'
-//         },
-//         scales: {
-//             yAxes: [{ticks: {fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'}}],
-//             xAxes: [{display: false}]
-//         }
-//     }
-// });
+var leveldist = document.getElementById("level-dist").getContext('2d');
+var chart2 = new Chart(leveldist, {
+    type: 'doughnut',
+    data: {
+        labels: <%= raw @rating_categories %>,
+        datasets: [{
+            data: <%= @student_ratings_count %>,
+            backgroundColor: [
+                'rgba(15, 163, 177, 1)',
+                'rgba(247, 160, 114, 1)',
+                'rgba(104, 216, 214, 1)',
+                'rgba(188, 196, 219, 1)',
+                'rgba(68, 69, 69, 1)',
+                'rgba(247, 227, 114, 1)',
+                'rgba(247, 160, 135, 1)',
+                'rgba(216, 104, 106, 1)'
 
-// var levelbreakdwon = document.getElementById("level-breakdown").getContext('2d');
-// var chart3 = new Chart(levelbreakdwon, {
-//     type: 'doughnut',
-//     data: {
-//         labels: ["Class J", "Class H-I", "Class F-G", "Class D-E", "Class A-C", "Expert +"],
-//         datasets: [{
-//             data: [.31, .40, .10, .5, .12, .2],
-//             backgroundColor: [
-//                 'rgba(15, 163, 177, 1)',
-//                 'rgba(247, 160, 114, 1)',
-//                 'rgba(104, 216, 214, 1)',
-//                 'rgba(188, 196, 219, 1)',
-//                 'rgba(68, 69, 69, 1)',
-//             ]
-//         }]
-//     },
-//     options: {
-//         responsive: true,
-//         legend: {
-//             position: false,
-//         },
-//         title: {
-//             display: false
-//         },
-//         animation: {
-//             animateScale: true,
-//             animateRotate: true
-//         }
-//     }
-// });
+
+            ]
+        }]
+    },
+     options: {
+        responsive: true,
+        legend: {
+            display: false
+        },
+        title: {
+            display: false
+        },
+        scales: {
+          responsive: true,
+          legend: {
+              position: false,
+          },
+          title: {
+              display: false
+          },
+          animation: {
+              animateScale: true,
+              animateRotate: true
+          }
+        }
+    }
+});
 </script>
+

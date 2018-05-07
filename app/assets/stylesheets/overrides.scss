@@ -84,6 +84,11 @@ li .form-inline{
   color: #000;
 }
 
+#checklist p{
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
 /********** DROPDOWN BECAUSE MATERIALIZE SUCKS ********/
 .dropbtn {
     border: none;
@@ -128,8 +133,6 @@ li .form-inline{
   margin: 0 auto;
   padding: 20px;
 }
-
-    
 
 /********** INDEX PAGE ********/
 
@@ -249,8 +252,37 @@ li .form-inline{
 }
 
 /********** ADMIN DASHBOARD ********/
-.collection{
-  font-size: .8em;
+
+.box-icon{
+  float:left;
+}
+.box-content{
+  float: right;
+  margin-right: 2em;
+  text-align: right;
+}
+
+.box-content h6{
+  color: #000;
+  font-size: 2em;
+}
+
+.box-panel{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#dashboard-charts .card-title{
+  margin-bottom: 2%;
+  color: #000;  
+}
+
+#dashboard-charts{
+  color: #a6a6a6;
+}
+
+#recent-registrations{
+  font-size: 0.9em;
 }
 
 /********** INDEX PAGES FOR MODELS ********/
