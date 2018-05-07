@@ -8,7 +8,20 @@
         <li><%= link_to 'About', about_path %></li>
         <li><%= link_to "Curriculums", curriculums_path %></li>
         <li><%= link_to "Camps", camps_path %></li>
+        <li><%= link_to "Locations", locations_path %></li>
         <li><%= link_to 'Contact Us', contact_path %></li>
+        <span id="search-area">
+          <li id="search-section"><a href="#" class="open-search"><i class="material-icons">search</i></a>
+          </li>
+          <li>
+            <%= form_with url: search_path, method: :get, id: "search" do %>
+                <%= text_field_tag 'query', '' %>
+                <!-- submitting via js (press enter) so not using... -->
+                <%# submit_tag('Find') %>
+            <% end %>
+          </li>
+        </span>
+
       </span>
       <li><%= link_to 'Login', login_path %></li>
       <li><%= link_to 'Sign up', new_family_path %></li>

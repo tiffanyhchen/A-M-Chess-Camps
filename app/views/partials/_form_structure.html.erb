@@ -5,6 +5,7 @@
         <span class="card-title"><%= type_of_form %></span>
         <%= simple_form_for(object) do |f| %>
           <%= f.error_notification %>
+          <%= f.error :base %>
           <div class="row">
             <div class="form-inputs">
               <%= render partial: "#{fields}", locals: { f: f } %>

@@ -1,10 +1,6 @@
 <% opt = "#{object.respond_to?(:proper_name) ? object.proper_name : (object.respond_to?(:name) ? object.name : model_name.capitalize) }" %>
 
 <div class="form-actions">
-  <%= link_to(eval("#{model_name.pluralize}_path"), class: 'waves-effect waves-light btn') do %>
-    &nbsp;Display All <%# model_name.pluralize.capitalize %>
-  <% end %>
-  &nbsp;&nbsp;
   <% if logged_in? && ( current_user.role?(:admin) ) %>
     <%= link_to(eval("edit_#{model_name}_path(object)"), class: 'waves-effect waves-light btn') do %>
         &nbsp;<%= "Edit #{opt}" %>

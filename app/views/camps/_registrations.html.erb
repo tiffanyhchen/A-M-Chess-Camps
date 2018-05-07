@@ -1,5 +1,5 @@
-<div class="card indigo lighten-2">
-  <div class="card-content white-text">
+<div class="card lighten-2">
+  <div class="card-content">
     <span class="card-title">Registrations</span>
     <% if @students.empty? %>
     <p>No students at this time</p>
@@ -7,17 +7,14 @@
       <ul>
         <% @students.each do |s| %>
           <li>
-            <%= link_to(registration_path(id: registration_id_for(@camp, s)), method: :delete, class: 'remove') do %>
-              x&nbsp;&nbsp;
-            <% end %>
-            <%= link_to s.proper_name, student_path(s) %>
+            <%= s.proper_name %>
           </li>
         <% end %>
       </ul>
     <% end %>
-    <div class="card-action">
-    <%= link_to "Add a new student", new_registration_path(camp_id: @camp.id) %>
-    </div>
+    <% if !logged_in? %>
+      <p> Login or signup to register! </p>
+    <% end %>
   </div>
 </div>
 

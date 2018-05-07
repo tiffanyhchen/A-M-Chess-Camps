@@ -1,42 +1,112 @@
-<h4>Welcome back, <%= current_user.username %>!</h4>
-<div id="dashboard-charts">
-    <div class="row">
-        <div class="col s8">
+<div class="body-content">
+    <h4>Welcome back, <%= current_user.username %>!</h4>
+    <div id="dashboard-charts">
+        <div class="row">
+          <div class="col s3">
             <div class="card">
-                <div class="card-content white-text">
-                    <canvas id="reg-vs-time"></canvas>
+                <div class="card-content">
+                  <div class="row">
+                      <i class="material-icons medium">attach_money</i>
+                      <h6><%= @revenue.round %></h6>
+                      <div class="card-details">
+                        Total Revenue
+                      </div>                  
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="card">
+              <div class="card-content">
+                  <div class="col s1">
+                    <i class="material-icons">attach_money</i>
+                  </div>
+                  <div class="col s2">
+                    <h6>Registrations</h6>
+                    <div class="card-details">
+                      <%= @registrations_count %>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="card">
+              <div class="card-content">
+                  <h6>Students</h6>
+                  <div class="card-details">
+                    <%= @students_count %>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="card">
+              <div class="card-content">
+                  <h6>Full Camps</h6>
+                  <div class="card-details">
+                    <%= @full_camps %> / <%= @all_camps %>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="card">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col s8">
+                <div class="card">
+                    <div class="card-content white-text">
+                        <canvas id="curr-vs-camps"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Checklist</span>
+                            <ul class="collection">
+            <li class="collection-item"><div>Approve timecards<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+            <li class="collection-item"><div>Assign instructors<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+            <li class="collection-item"><div>Send out emails to families<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+            <li class="collection-item"><div>Contact facilities managers<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+            <li class="collection-item"><div>Email instructors<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
+          </ul>
+                    
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col s4">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">Checklist</span>
-                        <ul class="collection">
-        <li class="collection-item"><div>Approve timecards<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-        <li class="collection-item"><div>Assign instructors<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-        <li class="collection-item"><div>Send out emails to families<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-        <li class="collection-item"><div>Contact facilities managers<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-        <li class="collection-item"><div>Email instructors<a href="#!" class="secondary-content"><i class="material-icons">check_box_outline_blank</i></a></div></li>
-      </ul>
-                
+        <!-- <div class="row">
+            <div class="progress">
+                <div class="determinate" style="width: 20%"></div>
+            </div> 20%
+            <div class="progress">
+                <div class="determinate" style="width: 54%"></div>
+            </div> 54%
+            <div class="progress">
+                <div class="determinate" style="width: 71%"></div>
+            </div> 71%
+            <div class="progress">
+                <div class="determinate" style="width: 38%"></div>
+            </div> 38%
+        </div> -->
+        <div class="row">
+            <div class="col s8">
+                <div class="card">
+                    <div class="card-content">
+                        <canvas id="popular-camps"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s8">
-            <div class="card">
-                <div class="card-content">
-                    <canvas id="popular-camps"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col s4">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">Student Levels</span>
-                    <canvas id="level-breakdown"></canvas>
+            <div class="col s4">
+                <div class="card">
+                    <!-- <div class="card-content">
+                        <span class="card-title">Student Levels</span>
+                        <canvas id="level-breakdown"></canvas>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -45,38 +115,27 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
-var ctx = document.getElementById("reg-vs-time").getContext('2d');
+var ctx = document.getElementById("curr-vs-camps").getContext('2d');
 var chart1 = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
-        labels: ["January", "February", "March", "April", "May", "June"],
+        labels: <%= raw @curriculums %>,
         datasets: [{
-            label: "This Year",
-            data: [3, 6, 24, 19, 37, 15],
+            data: <%= @curriculums_camps %>,
             backgroundColor:'rgba(15, 163, 177, 0.2)',
             borderColor: 'rgba(15, 163, 177, 1)'
-        },{
-            label: "Last Year",
-            data: [15, 3, 16, 24, 4, 6],
-            borderDash: [5, 5],
-            borderColor: 'rgba(247, 160, 114, 1)',
-            fill: false
         }]
     },
      options: {
         responsive: true,
         legend: {
-            position: 'top',
+            position: 'false',
             labels: {
                 fontFamily: "'Sofia Pro', sans-serif"
             }
         },
         title: {
-            display: true,
-            text: 'Registrations in the Last Few Months',
-            fontSize: 20,
-            fontFamily: "'Sofia Pro', sans-serif",
-            fontStyle: '500'
+            display: false
         },
         scales: {
             yAxes: [
@@ -88,7 +147,7 @@ var chart1 = new Chart(ctx, {
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: '# of Registrations',
+                        labelString: '# of Camps',
                         fontFamily: "'Sofia Pro', sans-serif"
                     }
                 }
@@ -99,10 +158,10 @@ var chart1 = new Chart(ctx, {
                     {
                         fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'
                     },
-                    display: true,
+                    display: false,
                     scaleLabel: {
-                        display: true,
-                        labelString: 'Month',
+                        display: false,
+                        labelString: 'Curriculums',
                         fontFamily: "'Sofia Pro', sans-serif"
                     }
                 }
@@ -111,64 +170,64 @@ var chart1 = new Chart(ctx, {
     }
 });
 
-var popcamps = document.getElementById("popular-camps").getContext('2d');
-var chart2 = new Chart(popcamps, {
-    type: 'bar',
-    data: {
-        labels: ["Principles of Chess", "Mastering Chess Tactics", "The Tactics of Mikhail Tal", "Nimzo-Indian Defense", "Endgame Principles"],
-        datasets: [{
-            data: [32, 74, 38, 13, 45],
-            backgroundColor:'rgba(15, 163, 177, 1)',
-            borderColor: 'rgba(15, 163, 177, 1)'
-        }]
-    },
-     options: {
-        responsive: true,
-        legend: {
-            display: false
-        },
-        title: {
-            display: true,
-            text: 'Most Popular Curriculums',
-            fontSize: 20,
-            fontFamily: "'Sofia Pro', sans-serif",
-            fontStyle: '500'
-        },
-        scales: {
-            yAxes: [{ticks: {fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'}}],
-            xAxes: [{display: false}]
-        }
-    }
-});
+// var popcamps = document.getElementById("popular-camps").getContext('2d');
+// var chart2 = new Chart(popcamps, {
+//     type: 'bar',
+//     data: {
+//         labels: <%= @curriculums %>,
+//         datasets: [{
+//             data: <%= @curriculums_registrations %>,
+//             backgroundColor:'rgba(15, 163, 177, 1)',
+//             borderColor: 'rgba(15, 163, 177, 1)'
+//         }]
+//     },
+//      options: {
+//         responsive: true,
+//         legend: {
+//             display: false
+//         },
+//         title: {
+//             display: true,
+//             text: 'Most Popular Curriculums',
+//             fontSize: 20,
+//             fontFamily: "'Sofia Pro', sans-serif",
+//             fontStyle: '500'
+//         },
+//         scales: {
+//             yAxes: [{ticks: {fontSize: 12, fontFamily: "'Sofia Pro', sans-serif", fontColor: '#000', fontStyle: '500'}}],
+//             xAxes: [{display: false}]
+//         }
+//     }
+// });
 
-var levelbreakdwon = document.getElementById("level-breakdown").getContext('2d');
-var chart3 = new Chart(levelbreakdwon, {
-    type: 'doughnut',
-    data: {
-        labels: ["Class J", "Class H-I", "Class F-G", "Class D-E", "Class A-C", "Expert +"],
-        datasets: [{
-            data: [.31, .40, .10, .5, .12, .2],
-            backgroundColor: [
-                'rgba(15, 163, 177, 1)',
-                'rgba(247, 160, 114, 1)',
-                'rgba(104, 216, 214, 1)',
-                'rgba(188, 196, 219, 1)',
-                'rgba(68, 69, 69, 1)',
-            ]
-        }]
-    },
-    options: {
-        responsive: true,
-        legend: {
-            position: false,
-        },
-        title: {
-            display: false
-        },
-        animation: {
-            animateScale: true,
-            animateRotate: true
-        }
-    }
-});
+// var levelbreakdwon = document.getElementById("level-breakdown").getContext('2d');
+// var chart3 = new Chart(levelbreakdwon, {
+//     type: 'doughnut',
+//     data: {
+//         labels: ["Class J", "Class H-I", "Class F-G", "Class D-E", "Class A-C", "Expert +"],
+//         datasets: [{
+//             data: [.31, .40, .10, .5, .12, .2],
+//             backgroundColor: [
+//                 'rgba(15, 163, 177, 1)',
+//                 'rgba(247, 160, 114, 1)',
+//                 'rgba(104, 216, 214, 1)',
+//                 'rgba(188, 196, 219, 1)',
+//                 'rgba(68, 69, 69, 1)',
+//             ]
+//         }]
+//     },
+//     options: {
+//         responsive: true,
+//         legend: {
+//             position: false,
+//         },
+//         title: {
+//             display: false
+//         },
+//         animation: {
+//             animateScale: true,
+//             animateRotate: true
+//         }
+//     }
+// });
 </script>

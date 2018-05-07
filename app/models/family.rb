@@ -12,6 +12,7 @@ class Family < ApplicationRecord
 
   # scopes
   scope :alphabetical, -> { order('family_name') }
+  scope :search, ->(term) { where('parent_first_name LIKE ? OR family_name LIKE ?', "#{term}%", "#{term}%") }
 
   # validations
   validates_presence_of :family_name, :parent_first_name

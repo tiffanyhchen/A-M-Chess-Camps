@@ -1,35 +1,34 @@
-<div class="row">
-	  <div class="col s12 center">
-		<h2>Contact A&amp;M Chess Camps</h2>
+<section class="hero index-hero" id="hero7">
+  <div class="hero-inner">
+    <div class="description">
+      <h2>contact</h2>
+    </div>
+  </div>
+</section>
 
-        <p>Despite the inspiring story we told in our <%= link_to "about page", about_path %>, the
-          fact is that these camps are a fiction created for a class project for students at Carnegie Mellon University. No doubt you wanted to sign your
-          child up for every camp we offer so they wouldn't lose every round at
-          chess tournaments, but apparently you'll just have to keep getting used to losing.
-          If you are bitterly disappointed (and quite honestly, you should be) and want to grouse to someone, here's the contact info:</p>
-
-		<p class="supertiny">&nbsp;</p>
-		<table cellpadding="3">
-			<tr>
-				<td>Webmaster:&nbsp;&nbsp;&nbsp;</td>
-				<td>Professor Larry Heimann</td>
-			</tr>
-			<tr>
-				<td>Email:</td>
-				<td>
-				<%= mail_to("profh@cmu.edu", "Klingon Code Warrior*", :encode => "javascript") %> 
-				</td>
-			</tr>
-			<tr>
-				<td>Phone:</td>
-				<td>412-268-8211</td>
-			</tr>
-		</table>
-
-		<p class="note"><br>*I am a professor of information systems at Carnegie Mellon University and this nickname was a little joke between myself and my students that I adopted as my signature for all my programming work.  
-			<br><br><em>... in truth I am only half-Klingon.</em></p>
-			
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
+<div class="body-content">
+	<div class="row">
+		<div class="col s8">
+			<h3>get in touch</h3>
+      <p>Despite the inspiring story we told in our <%= link_to "about page", about_path %>, the
+        fact is that these camps are a fiction created for a class project for students at Carnegie Mellon University. No doubt you wanted to sign your
+        child up for every camp we offer so they wouldn't lose every round at
+        chess tournaments, but apparently you'll just have to keep getting used to losing.
+        If you are bitterly disappointed (and quite honestly, you should be) and want to grouse to someone, the contact info is to the right.</p>
+	  </div>
+	  <div class="col s4">
+			<p class="section-area">
+			  <div class="section-title">webmaster</div>
+			  Tiffany Chen
+			</p>
+			<p class="section-area">
+			  <div class="section-title">email</div>
+			  <%= mail_to("tiffanychen@example.edu", "Tiffany", :encode => "javascript") %> 
+			</p>
+			<p class="section-area">
+			  <div class="section-title">phone</div>
+			  412-268-8211 
+			</p>
+		</div>
 	</div>
 </div>

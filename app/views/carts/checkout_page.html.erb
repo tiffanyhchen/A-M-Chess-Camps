@@ -1,0 +1,40 @@
+<% @registration = Registration.new %>
+  <!-- now the form template itself -->
+  <div class="row">
+    <div class="col">
+      <h5>Checkout:</h5>
+      <%= simple_form_for(@registration, :url => checkout_cart_path) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error :base %>
+        <div class="row">
+          <!-- <div class="card-wrapper"></div> -->
+          <div class="form-inputs">
+            <%= f.input :credit_card_number, include_blank: true, id: "num" %>
+            <%= f.input :expiration_year, include_blank: true %>
+            <%= f.input :expiration_month, include_blank: true %>
+          </div>
+          <!-- <div class="form-container active">
+            <form action="">
+              <input id="hidden-num" type="hidden" type="tel" name="number">
+              <input id="hidden-name" type="hidden"type="text" name="name">
+              <input id="hidden-expiry" type="hidden" type="tel" name="expiry">
+              <input id="hidden-cvc" type="hidden" type="number" name="cvc">
+            </form>
+          </div> -->
+        </div>
+        <div class="row">
+          <div class="form-actions col s8">
+            <%= f.button :submit %>
+          </div>
+        </div>
+      <% end %>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/card/2.4.0/card.js"></script>
+      <script>
+          new Card({
+              form: document.querySelector('form'),
+              container: '.card-wrapper'
+          });
+      </script> -->
+
+    </div>
+  </div>

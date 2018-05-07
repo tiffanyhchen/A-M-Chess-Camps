@@ -1,5 +1,6 @@
 <% flash.each do |name, msg| %>
-  <div>
-    <%= javascript_tag "Materialize.toast('#{msg}', 4000)" %>
-  </div>
+    <div data-alert data-options="animation_speed:500, animation:'fadeOut';" class="alert-box <%= flash[:notice] ? "success" : "warning" %>">
+    <!-- <a href="#" class="close">&times;</a> -->
+      <%= msg %>
+    </div>
 <% end %>

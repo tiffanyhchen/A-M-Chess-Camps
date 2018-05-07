@@ -1,0 +1,70 @@
+<section id="search-results">
+  <div class="hero-inner">
+    <div class="description center">
+      <p>search for</p>
+      <h2><%= @query %></h2>
+      <% if logged_in? && ( current_user.role?(:admin) ) %>
+        showing <%= pluralize(@total_hits, 'result') %>
+      <% else %>
+        showing <%= pluralize(@curriculums.size + @locations.size, 'result') %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+
+<div class="body-content">
+    <ul class="collection">
+      <% if logged_in? && ( current_user.role?(:admin) ) %>
+        <% unless @users.empty? %>
+          <li class="collection-item">
+            <p>Users</p>
+            <ul>
+              <% for u in @users do %>
+                <li><%= link_to u.username, user_path(u) %></li>
+              <% end %>
+            </ul>
+            <p class="smtext">&nbsp;</p>
+          </li>
+        <% end %>
+
+        <% unless @students.empty? %>
+          <li class="collection-item">
+            <p>Students</p>
+            <ul>
+              <% for s in @students do %>
+                <li><%= link_to s.name, student_path(s) %></li>
+              <% end %>
+            </ul>
+            <p class="supertiny">&nbsp;</p>
+          </li>
+        <% end %>
+
+      <% end %>
+
+      <% unless @curriculums.empty? %>
+        <li class="collection-item">
+          <p>Curriculums</p>
+          <ul>
+            <% for c in @curriculums do %>
+              <li><%= link_to c.name, curriculum_path(c) %></li>
+            <% end %>
+          </ul>
+          <p class="supertiny">&nbsp;</p>
+        </li>
+      <% end %>
+
+      <% unless @locations.empty? %>
+        <li class="collection-item">
+          <p>Locations matching term '<%= @query %>'</p>
+          <ul>
+            <% for l in @locations do %>
+              <li><%= link_to l.name, location_path(l) %></li>
+            <% end %>
+          </ul>
+          <p class="supertiny">&nbsp;</p>
+        </li>
+      <% end %>
+    </ul>
+
+</div>

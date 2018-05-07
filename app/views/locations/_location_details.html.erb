@@ -1,15 +1,17 @@
-<h4><%= @location.name %></h4>
+<h3><%= @location.name %></h3>
 
-<strong>Address:</strong></br>
-
+<p class="section-area">
+  <div class="section-title">address</div>
   <%= render partial: "partials/address_info", locals: {location: @location}  %>
+</p>
+
 
 <p>
-  <strong>Maximum Capacity:</strong>
+  <div class="section-title">maximum capacity</div>
   <%= @location.max_capacity %>
 </p>
 
 <p>
-  <strong>Active:</strong>
+  <div class="section-title">active</div>
   <%= @location.active ? "Yes" : "No" %>
 </p>

@@ -15,6 +15,7 @@ class Instructor < ApplicationRecord
   # scopes
   scope :alphabetical, -> { order('last_name, first_name') }
   scope :needs_bio, -> { where(bio: nil) }
+  scope :search, ->(term) { where('first_name LIKE ? OR last_name LIKE ?', "#{term}%", "#{term}%") }
 
   # class methods
   def self.for_camp(camp)

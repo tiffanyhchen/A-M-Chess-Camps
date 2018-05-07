@@ -17,6 +17,7 @@ class Location < ApplicationRecord
   
   # scopes
   scope :alphabetical, -> { order('name') }
+  scope :search, ->(term) { where('name LIKE ?', "#{term}%") }
 
   # callbacks
   before_destroy do 

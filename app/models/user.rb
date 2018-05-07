@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates_format_of :phone, with: /\A\(?\d{3}\)?[-. ]?\d{3}[-.]?\d{4}\z/, message: "should be 10 digits (area code needed) and delimited with dashes or dots"
   validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil))\z/i, message: "is not a valid format"
 
+  scope :search, ->(term) { where('username LIKE ?', "#{term}%") }
+
   # callbacks
   before_save :reformat_phone
 

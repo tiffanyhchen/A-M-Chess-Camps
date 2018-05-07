@@ -6,6 +6,17 @@
     <th></th>
   </thead>
   <tbody>
+    <% for ci in @cart_items %>
+      <tr>
+        <td><%= link_to Camp.find(ci[0]).name, camp_path(Camp.find(ci[0])) %></td>
+        <td><%= link_to Student.find(ci[1]).name, student_path(Student.find(ci[1])) %></td>
+        <td><%= link_to Camp.find(ci[0]).cost %></td>
+        <td><%= link_to(delete_from_cart_path(camp_id: Camp.find(ci[0]).id, student_id: Student.find(ci[1]).id), method: :delete) do %>
+                  <i class="material-icons">delete</i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 <br>

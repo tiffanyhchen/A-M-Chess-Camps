@@ -3,7 +3,7 @@ class CurriculumsController < ApplicationController
   authorize_resource
 
   def index
-    @curriculums = Curriculum.all
+    @curriculums = Curriculum.all.alphabetical
   end
 
   def show

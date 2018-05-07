@@ -1,0 +1,16 @@
+<div class="card lighten-2">
+  <div class="card-content">
+    <span class="card-title">Camp Instructors</span>
+    <% if @instructors.empty? %>
+    <p>No instructors at this time</p>
+    <% else %>
+      <ul>
+        <% @instructors.each do |i| %>
+          <li>
+            <%= link_to i.proper_name, instructor_path(i) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

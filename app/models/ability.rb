@@ -104,7 +104,9 @@ class Ability
       can :read, Camp
       can :read, Curriculum
       can :read, Location
-
+      can :instructors, Camp
+      can :students, Camp
+      
       can :create, User
       can :create, Family
     end

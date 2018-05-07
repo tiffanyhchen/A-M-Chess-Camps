@@ -1,14 +1,53 @@
 <nav>
   <div class="nav-wrapper">
-    &nbsp&nbsp
-    <a href="/" class="brand-logo">A&M Chess Camp</a>
-    <ul class="right">
-      <li><%= link_to "Curriculums", curriculums_path %></li>
-      <li><%= link_to "Camps", camps_path %></li> 
-      <li><%= link_to "Instructors", instructors_path %></li>
-      <li><%= link_to "Locations", locations_path %></li>
-      <li><%= link_to "Users", users_path %></li>
-      <li><%= link_to "Students", students_path %></li>
+    <ul class="left">
+      <li><%= link_to 'a&m', home_path, class: "brand-logo" %></li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      <span id="center-nav">
+        <li>
+          <span class="dropdown-nav">
+            <a class="dropbtn valign-wrapper">Manage Camps
+              <svg fill="#0FA3B1" height="16" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+                <path d="M0-.75h24v24H0z" fill="none"/>
+              </svg>
+            </a>
+            <div class="dropdown-nav-content">
+              <%= link_to "Curriculums", curriculums_path %>
+              <%= link_to "Camps", camps_path %>
+              <%= link_to "Locations", locations_path %>
+            </div>
+          </span>
+        </li>
+        <li>
+          <span class="dropdown-nav">
+            <a class="dropbtn valign-wrapper">Manage People
+              <svg fill="#0FA3B1" height="16" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+                <path d="M0-.75h24v24H0z" fill="none"/>
+              </svg>
+            </a>
+            <div class="dropdown-nav-content">
+              <%= link_to "Users", users_path %>
+              <%= link_to "Students", students_path %>
+              <%= link_to "Instructors", instructors_path %>
+            </div>
+          </span>
+        </li>
+
+        <span id="search-area">
+          <li id="search-section"><a href="#" class="open-search"><i class="material-icons">search</i></a>
+          </li>
+          <li>
+            <%= form_with url: search_path, method: :get, id: "search" do %>
+                <%= text_field_tag 'query', '' %>
+                <!-- submitting via js (press enter) so not using... -->
+                <%# submit_tag('Find') %>
+            <% end %>
+          </li>
+        </span>
+      </span>
       <li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
       <li><%= link_to 'Logout', logout_path %></li>
     </ul>

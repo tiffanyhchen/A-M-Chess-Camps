@@ -1,18 +1,28 @@
-<div class="row">
-  <div class="col s7">
-    <%= render :partial => "camp_details" %>
+<div class="body-content">
+  <div class="row">
+    <%= render :partial => "partials/back_button", locals: {model_name: "camp", object: @camp} %>
   </div>
-  <div class="col s5">
-    <%= render :partial => "camp_instructors_vue"%>
-    <%#= render :partial => "camp_instructors"%>
-    <%= render :partial => "registrations_vue"%>
-    <%#= render :partial => "registrations"%>
-    <%# render :partial => "camp_students"%>
+  <div class="row">
+    <div class="col s8">
+      <%= render :partial => "camp_details" %>
+    </div>
+    <div class="col s4">
+      <% if logged_in? && current_user.role?(:admin) %>
+        <%= render :partial => "camp_instructors_vue"%>
+      <% elsif logged_in? && (current_user.role?(:parent) || current_user.role?(:admin)) %>
+        <%= render :partial => "registrations_vue"%> 
+      <% else %>
+        <%= render :partial => "camp_instructors"%> 
+        <%= render :partial => "registrations"%>
+      <% end %>
+        
+      <%# render :partial => "camp_students"%>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col s12">
-    <%= render :partial => "partials/object_options", locals: {model_name: "camp", object: @camp} %>
+  <div class="row">
+    <div class="col s12">
+      <%= render :partial => "partials/object_options", locals: {model_name: "camp", object: @camp} %>
+    </div>
   </div>
 </div>
 
