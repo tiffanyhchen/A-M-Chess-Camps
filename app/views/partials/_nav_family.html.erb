@@ -1,7 +1,7 @@
 <nav>
   <div class="nav-wrapper">
     &nbsp&nbsp
-    <a href="/" class="brand-logo">A&M Chess Camp</a>
+    <a href="/" class="brand-logo">a&m</a>
     <ul class="right">
       <span id="center-nav">
         <li><%= link_to "Curriculums", curriculums_path %></li>
@@ -19,13 +19,13 @@
             </li>
           </span>
       </span>
-      <li><%= link_to "My Profile", edit_family_path(family_for(current_user)) %></li>
-      <li><%= link_to 'Logout', logout_path %></li>
       <li>
         <%= link_to view_cart_path do %>
-          <i class="material-icons left">shopping_cart</i>Cart
+          <i class="material-icons left">shopping_cart</i><%= session[:cart].length %> Items
         <% end %>
       </li>
+      <li><%= link_to "My Profile", edit_family_path(family_for(current_user)) %></li>
+      <li><%= link_to 'Logout', logout_path %></li>
     </ul>
   </div>
 </nav>

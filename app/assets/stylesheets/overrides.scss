@@ -330,6 +330,39 @@ li .form-inline{
   margin-bottom: 6.75%;
 }
 
+/********** PARENT DASHBOARD ********/
+#students-list{
+  font-size: 1.1em;
+}
+
+.student-each{
+  margin: 5px;
+}
+
+.student-section{
+  margin-bottom: 5%;
+  color: #a6a6a6;
+}
+
+.student-section table{
+  margin-left: 5%;
+}
+
+.student-section p{
+  padding-left: 5%;
+}
+.student-title{
+  font-size: 1.25em;
+  color: #000000;
+}
+
+/********** CART ********/
+.cart h4{
+  color: #0FA3B1;
+}
+
+
+
 /********** INDEX PAGES FOR MODELS ********/
 h2{
   color: white;
@@ -445,7 +478,12 @@ li.no_bullet{
   .alert-box.alert-close {
     opacity: 0; }
 
-/*** button struggles ***/
+/*** BUTTONS ***/
 .card-action a#edit-button.btn.waves-effect.waves-light{
   color: #fff;
+}
+
+/*** TABLES ***/
+#family-view{
+   margin-left: 10%; margin-bottom: 10%; width: 90%; font-size: .8em;
 }

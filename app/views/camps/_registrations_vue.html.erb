@@ -12,10 +12,14 @@
             class="no_bullet">  
         </ul>
       <% end %>
-      <div class="card-action">
-      <%# link_to "Add a new instructor", "#" %>
-      <%= link_to "+ NEW STUDENT", "#", {%s(v-on:click) => "switch_modal()"} %>
-      </div>
+      <% if !@camp.is_full? %>
+        <div class="card-action">
+        <%# link_to "Add a new instructor", "#" %>
+        <%= link_to "+ NEW STUDENT", "#", {%s(v-on:click) => "switch_modal()"} %>
+        </div>
+      <% else %>
+        Registrations full! Try another camp.
+      <% end %>
     </div>
   </div>
 

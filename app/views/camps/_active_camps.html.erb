@@ -21,7 +21,13 @@
         <td><%= camp.start_date.strftime("%m/%d/%y") %></td>
         <td><%= camp.time_slot == "am" ? "Morning" : "Afternoon" %></td>
         <td><%= camp.max_students %></td>
-        <td><%= camp.max_students - camp.registrations.count %></td>
+        <td>
+          <% if camp.is_full? %>
+            <span style="color: #F7A072;">FULL</span>
+          <% else %>
+            <%= camp.max_students - camp.registrations.count %>
+          <% end %>
+        </td>
         <% if logged_in? && ( current_user.role?(:admin) ) %>
           <td><%= link_to 'Edit', edit_camp_path(camp), :class=>"btn waves-effect waves-light" %></td>
         <% end %>

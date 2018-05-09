@@ -51,6 +51,12 @@ class HomeController < ApplicationController
         @enrollment_rates[c] = c.enrollment.to_f / c.max_students
       end
 
+    elsif logged_in? && current_user.role?(:parent)
+      @parent = Family.where(user_id: current_user).first
+      @your_students = @parent.students
+      @registrations
+
+    elsif logged_in? && current_user.role?(:instructor)
     end
 
   end

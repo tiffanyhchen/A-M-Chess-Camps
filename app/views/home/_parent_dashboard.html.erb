@@ -1,8 +1,58 @@
 <div class="body-content">
   <h4>Welcome back, <%= current_user.username %>!</h4>
   <div class="row">
-    <div class="col s3">
-            <div class="card">
-                <div class="card-content">
+    <div class="col s4">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Your Students</span>
+          <br/>
+              <div id="students-list">
+              <% if @your_students.empty? %>
+                <p>No students at this time</p>
+              <% else %>
+                <% @your_students.each do |s| %>
+                  <div class="student-each"><%= link_to s.name, s %></div><br/>
+                <% end %>
+              <% end %>
+              </div>
+          <div class="card-action">
+              <%= link_to '+ NEW STUDENT', new_student_path, :class=>"btn waves-effect waves-light", :id=>"edit-button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s8">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Upcoming Camp Registrations</span>
+          <br/>
+          <% if @your_students.empty? %>
+            <p>No registrations at this time</p>
+            <% else %>
+              <% for s in @your_students %>
+                <div class="student-section">
+                <div class="student-title"><%= s.first_name %>'s Camps</div>
+                  <table class="center">
+                    <% if s.registrations.empty? %>
+                      <p>No registrations at this time. Browse our <%= link_to "camps", camps_path %>!</p>
+                    <% else %>
+                      <thead>
+                        <th>Camp Name</th>
+                        <th>Dates</th>
+                      </thead>
+                      <% for r in s.registrations %>
+                        <tr>
+                          <td><%= link_to r.camp.name, camp_path(r.camp) %></td>
+                          <td><%= r.camp.start_date.strftime("%m/%d/%y") %> - <%= r.camp.end_date.strftime("%m/%d/%y") %></td>
+                        </tr>
+                      <% end %>
+                    <% end %>
+                  </table>
+                </div>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

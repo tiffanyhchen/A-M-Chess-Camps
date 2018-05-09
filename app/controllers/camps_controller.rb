@@ -1,5 +1,6 @@
 class CampsController < ApplicationController
   before_action :set_camp, only: [:show, :edit, :update, :destroy, :instructors, :students]
+  before_action :set_user, only: [:set_user]
   authorize_resource
 
   include AppHelpers::Cart
@@ -44,7 +45,12 @@ class CampsController < ApplicationController
   end
 
   def students
-    @students = @camp.students.alphabetical
+    if current_user.role?(:parent)
+      students_all = @camp.students.alphabetical
+      @students = Family.where(user_id: current_user).first.students.select{|s| students_all.include?(s)}
+    else
+      @students = @camp.students.alphabetical
+    end
   end
 
   def destroy
@@ -60,4 +66,5 @@ class CampsController < ApplicationController
     def camp_params
       params.require(:camp).permit(:curriculum_id, :location_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active)
     end
+
 end

@@ -1,12 +1,18 @@
-<h4>Your cart has <%= session[:cart].length %> <%= 'item'.pluralize(session[:cart].length) %>.</h4>
+<p id="notice"><%= notice %></p>
 
-<% unless session[:cart].empty? %>
-  <%= render partial: 'cart_content' %>
-
-  <div id="checkout_button">
-    <a class="waves-effect waves-light btn" <%= link_to "Proceed to Checkout", checkout_page_path %> </a>
+<div class="body-content cart">
+  <div class="row right">
+    <h4><%= session[:cart].length %>  <%= 'item'.pluralize(session[:cart].length) %></h4>
   </div>
-<% else %>
-  <h5><em>Please place at least one item in your cart before checking out.</em></h5>
-<% end %>
+  <% unless session[:cart].empty? %>
+      <%= render partial: 'cart_content' %><br/><br/><br/>
+      <div class="right">
+        <div id="checkout_button">
+          <a class="waves-effect waves-light btn" <%= link_to "Proceed to Checkout", checkout_page_path %> </a>
+        </div>
+    </div>
+  <% else %>
+    <h5>Please place at least one item in your cart before checking out.</h5>
+  <% end %>
+</div>
 
