@@ -45,7 +45,6 @@ class CartsController < ApplicationController
         @registration.credit_card_number = @credit_card_number
         @registration.expiration_year = @expiration_year.to_i
         @registration.expiration_month = @expiration_month.to_i
-        byebug
         if @registration.valid?
           @registration.pay
         else
