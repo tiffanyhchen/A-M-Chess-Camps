@@ -1,0 +1,8 @@
+<div class="body-content">
+  <div class="row">
+    <%= render :partial => "partials/back_button", locals: {model_name: "student", object: @student} %>
+  </div>
+  <%= render partial: "partials/form_structure", locals: {object: @student, 
+                                                        type_of_form: "Edit Student",
+                                                        fields: "fields"} %>
+</div>

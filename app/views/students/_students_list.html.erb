@@ -1,6 +1,4 @@
-<h4>Students</h4>
-
-<table class="striped highlight">
+<table class="highlight">
   <thead>
     <th>Name</th>
     <th>Family</th>
@@ -14,14 +12,21 @@
     <tr>
       <td><%= link_to s.name, student_path(s) %></td>
       <td><%= link_to s.family.family_name, family_path(s.family) %></td>
-      <td><%= s.date_of_birth %></td>
+      <td><%= s.date_of_birth.strftime("%m/%d/%y") %></td>
       <td><%= s.age %></td>
       <td>&nbsp;<%= s.rating %></td>
-      <td>&nbsp;<%= s.active %></td>
+      <td>&nbsp;<%= s.active ? "Yes" : "No" %></td>
+      <td> <% if can? :edit, s %>
+          <%= link_to edit_student_path(s) do %>
+            <i class="material-icons">edit</i>
+          <% end %> 
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>
 <br />
-<%= will_paginate @students, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
-<p>&nbsp;</p>
-<%= render :partial => "partials/add_new_object", locals: {model_name: 'student'} %>
+<span class="paginate center">
+    <%= will_paginate @students, :previous_label => "<", :next_label => ">", :param_name => 'students' %>
+  </span>
+<br/>

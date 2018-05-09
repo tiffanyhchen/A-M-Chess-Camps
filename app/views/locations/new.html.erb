@@ -1,5 +1,7 @@
-<h1>New Location</h1>
-
-<%= render 'form', location: @location %>
-
-<%= link_to 'Back', locations_path %>
+<div class="body-content">
+  <div class="row">
+    <%= render :partial => "partials/back_button", locals: {model_name: "location", object: @location} %>
+  </div>
+  <h3>New Location</h3>
+  <%= render 'form', location: @location %>
+</div>

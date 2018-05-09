@@ -4,7 +4,7 @@
       <p>search for</p>
       <h2><%= @query %></h2>
       <% if logged_in? && ( current_user.role?(:admin) ) %>
-        showing <%= pluralize(@total_hits, 'result') %>
+        showing <%= pluralize(@totalhits, 'result') %>
       <% else %>
         showing <%= pluralize(@curriculums.size + @locations.size, 'result') %>
       <% end %>

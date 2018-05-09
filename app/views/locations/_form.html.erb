@@ -6,7 +6,7 @@
       <%= f.input :street_1, label_html: { class: 'active' } %>
       <%= f.input :street_2, label_html: { class: 'active' } %>
       <%= f.input :city, label_html: { class: 'active' } %>
-      <%= f.input :state, label_html: { class: 'active' }, collection: Location::STATES_LIST, include_blank: true %>
+      <%= f.input :state, collection: Location::STATES_LIST, include_blank: true %>
       <%= f.input :zip, label_html: { class: 'active' } %>
       <%= f.input :max_capacity, label_html: { class: 'active' } %>
       <%= f.input :active %>

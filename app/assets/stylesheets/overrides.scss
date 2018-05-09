@@ -224,6 +224,20 @@ li .form-inline{
   text-align: left;
 }
 
+/********** TABS ********/
+.tabs .tab a.active{
+  color: #0FA3B1;
+}
+
+.tabs .tab a:hover{
+  color: #F7A072;
+}
+
+.tabs .tab a{
+  color: #a6a6a6;
+}
+
+
 /********** PAGNATION ********/
 .paginate{
   font-size: 1.2em;
@@ -354,7 +368,7 @@ h3{
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-  color: #e0f7fa;
+  color: #F7A072;
 }
 
 .card .card-title{
@@ -363,7 +377,11 @@ h3{
 }
 
 .card .remove {
-  color: #b71c1c;
+  color: #F7A072;
+}
+
+li.no_bullet{
+  list-style-type: none;
 }
 
 /********** SWITCHES ********/
@@ -426,3 +444,8 @@ h3{
     color: #4f4f4f; }
   .alert-box.alert-close {
     opacity: 0; }
+
+/*** button struggles ***/
+.card-action a#edit-button.btn.waves-effect.waves-light{
+  color: #fff;
+}

@@ -25,7 +25,7 @@ Vue.component('student-row', {
 
   template: `
     <li>
-      <a v-on:click="remove_signup(student)" class="remove">x&nbsp;&nbsp;</a>
+      <a v-on:click="remove_signup(student)" class="remove"> <i class="material-icons tiny">close</i></a>
       {{ student.last_name }},&nbsp;{{ student.first_name }}
     </li>
   `,

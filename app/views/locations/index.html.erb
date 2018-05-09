@@ -5,20 +5,13 @@
     </div>
   </div>
 </section>
+<p id="notice"><%= notice %></p>
 <div class="body-content">
-  <% if @active_locations.empty? %>
-    <h3>There are no active locations in the system at this time</h3>
-  <% else %>
-    <%= render :partial => "locations_list", locals: {locations: @active_locations, state: "Active"} %>
-  <% end %>
-  <br>
-  <% unless @inactive_locations.empty? %>
-    <% if logged_in? && ( current_user.role?(:admin) ) %>
-      <%= render :partial => "locations_list", locals: {locations: @inactive_locations, state: "Inactive"} %>
-    <% end %>
-  <% end %>
-
-  <% if logged_in? && ( current_user.role?(:admin) ) %>
-    <%= link_to 'New Location', new_location_path %>
-  <% end %>
+  <%= render partial: "partials/location_index_structure", locals: {model_name: "location", 
+                                                           primary: "active_locations", 
+                                                           secondary: "inactive_locations",
+                                                           sidebar: nil} %>
 </div>
+
+
+

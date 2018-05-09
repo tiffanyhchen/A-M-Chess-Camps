@@ -1,14 +1,7 @@
-<div class="row">
+<% if @active_locations.empty? %>
+  <h5>There are no inactive locations in the system at this time</h5>
+<% else %>
 
-<div class= "col s4">
-  <p id="notice"><%= notice %></p>
-  <h3>Locations</h3>
-  <p>
-    We are a Pittsburgh based chess camp. See our locations to figure what works best for you.
-  </p>
-</div>
-
-<div class="col s8">
   <table>
     <thead>
       <tr>
@@ -22,7 +15,7 @@
     </thead>
 
     <tbody>
-      <% locations.each do |location| %>
+      <% @active_locations.each do |location| %>
         <tr>
           <td><%= link_to location.name, location %></td>
           <td><%= render :partial => "partials/address_info", locals: {location: location} %></td>
@@ -36,6 +29,6 @@
   </table>
 
   <span class="paginate">
-    <%= will_paginate locations, :previous_label => "<", :next_label => ">" %>
+    <%= will_paginate @active_locations, :previous_label => "<", :next_label => ">", :param_name => 'active_locations' %>
   </span>
-</div>
+<% end %>

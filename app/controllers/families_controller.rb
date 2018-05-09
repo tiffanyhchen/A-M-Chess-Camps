@@ -4,7 +4,7 @@ class FamiliesController < ApplicationController
   authorize_resource
 
   def index
-    @families = Family.all.alphabetical#.paginate(:page => params[:page]).per_page(12)
+    @families = Family.all.alphabetical.paginate(:page => params[:families]).per_page(10)
   end
 
   def show

@@ -1,11 +1,8 @@
-<div class="row">
-  <div class="field col s12">
-    <h1>Editing Camp</h1>
-    <%= render 'form', camp: @camp %>
-    <div class="row">
-      <div class="field col s12">
-        <%= link_to 'Show', @camp, :class=>"btn waves-effect waves-light" %>
-      </div>
-    </div>
+<div class="body-content">
+  <div class="row">
+    <%= render :partial => "partials/back_button", locals: {model_name: "camp", object: @camp} %>
   </div>
+  <h3>Editing Camp</h3> 
+  <%= link_to 'Show original', @camp %><br/><br/>
+  <%= render 'form', camp: @camp%>
 </div>

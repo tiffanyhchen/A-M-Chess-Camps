@@ -1,14 +1,19 @@
-<div class="row">
-  <div class="col s5">
-    <%= render :partial => "family_details" %>
+<div class="body-content">
+  <div class="row">
+    <%= render :partial => "partials/back_button", locals: {model_name: "location", object: @location} %>
   </div>
-  <div class="col s7">
-    <%= render :partial => "partials/students_list", locals: {students: @students} %>
+  <div class="row">
+    <div class="col s8">
+      <%= render :partial => "family_details" %>
+    </div>
+    <div class="col s4">
+      <%= render :partial => "partials/students_list", locals: {students: @students} %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col s12">
-    <%= render :partial => "partials/object_options", locals: {model_name: "family", object: @family} %>
+  <div class="row">
+    <div class="col s12">
+      <%= render :partial => "partials/object_options", locals: {model_name: "family", object: @family} %>
+    </div>
   </div>
 </div>
 

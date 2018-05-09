@@ -1,4 +1,14 @@
-<%= render partial: "partials/structure1", locals: {model_name: "user", 
-                                                         primary: "user_list", 
-                                                         secondary: nil,
-                                                         sidebar: nil} %>
+<p id="notice"><%= notice %></p>
+
+<div class="body-content">
+  <div class="col s4">
+    <h3>Users</h3>
+    <% if logged_in? && ( current_user.role?(:admin) ) %>
+      <h6><%= link_to '+ NEW USER', new_user_path %></h6>
+    <% end %>
+  </div>
+  <%= render partial: "partials/structure1", locals: {model_name: "user", 
+                                                   primary: "user_list", 
+                                                   secondary: nil,
+                                                   sidebar: nil} %>
+</div>

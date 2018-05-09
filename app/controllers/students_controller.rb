@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
   authorize_resource
 
   def index
-    @students = Student.all.alphabetical.paginate(:page => params[:page]).per_page(12)
+    @students = Student.all.alphabetical.paginate(:page => params[:students]).per_page(10)
   end
 
   def show

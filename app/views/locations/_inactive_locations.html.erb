@@ -1,0 +1,34 @@
+<% if @inactive_locations.empty? %>
+  <h5>There are no inactive locations in the system at this time</h5>
+<% else %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Max Capacity</th>
+        <% if logged_in? && ( current_user.role?(:admin) ) %>
+          <th colspan="3"></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @inactive_locations.each do |location| %>
+        <tr>
+          <td><%= link_to location.name, location %></td>
+          <td><%= render :partial => "partials/address_info", locals: {location: location} %></td>
+          <td><%= location.max_capacity %></td>
+          <% if logged_in? && ( current_user.role?(:admin) ) %>
+            <td><%= link_to 'Edit', edit_location_path(location), :class=>"btn waves-effect waves-light" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <span class="paginate center">
+    <%= will_paginate @active_locations, :previous_label => "<", :next_label => ">", :param_name => 'active_locations' %>
+  </span>
+<% end %>

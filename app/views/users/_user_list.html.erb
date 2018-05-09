@@ -1,6 +1,4 @@
-<h4>Users at A&M Chess Camps</h4>
-
-<table class="striped highlight">
+<table class="highlight">
   <thead>
     <th>Username</th>
     <th class="align_center">Role</th>
@@ -22,9 +20,8 @@
     </tr>
   <% end %>
 </table>
-<p class="supertiny"></p>
 <br />
-<%= will_paginate @users, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
-<p class="supertiny"></p>
+  <span class="paginate center">
+    <%= will_paginate @users, :previous_label => "<", :next_label => ">", :param_name => 'users' %>
+  </span>
 <br />
-<%= render :partial => "partials/add_new_object", locals: {model_name: 'user'} %>

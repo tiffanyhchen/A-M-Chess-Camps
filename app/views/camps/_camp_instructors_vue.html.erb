@@ -1,7 +1,7 @@
 <div id="assignments">
   <%= hidden_field_tag "camp_id", @camp.id %>
-  <div class="card indigo lighten-2">
-    <div class="card-content white-text">
+  <div class="card lighten-2">
+    <div class="card-content">
       <span class="card-title">Camp Instructors</span>
       <% if @camp.instructors.empty? %>
         <p>No instructors at this time</p>
@@ -14,7 +14,7 @@
       <% end %>
       <div class="card-action">
       <%# link_to "Add a new instructor", "#" %>
-      <%= link_to "Add a new instructor", "#", {%s(v-on:click) => "switch_modal()"} %>
+      <%= link_to "+ NEW INSTRUCTOR", "#", {%s(v-on:click) => "switch_modal()"} %>
       </div>
     </div>
   </div>

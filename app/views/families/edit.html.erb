@@ -1,5 +1,13 @@
-<%= render partial: "partials/form2_structure", locals: {object: @family, 
-                                                        type_of_form: "New Family",
+<div class="body-content">
+  <% if logged_in? && current_user.role?(:admin) %>
+    <div class="row">
+      <%= render :partial => "partials/back_button", locals: {model_name: "family", object: @family} %>
+    </div>
+  <% end %>
+
+  <%= render partial: "partials/form2_structure", locals: {object: @family, 
+                                                        type_of_form: "Edit Family",
                                                         fields1: "family_fields",
                                                         section_2: "User Account",
                                                         fields2: "user_fields"} %>
+</div>

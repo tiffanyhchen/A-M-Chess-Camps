@@ -25,7 +25,7 @@ Vue.component('instructor-row', {
 
   template: `
     <li>
-      <a v-on:click="remove_assignment(instructor)" class="remove">x&nbsp;&nbsp;</a>
+      <a v-on:click="remove_assignment(instructor)" class="remove"> <i class="material-icons tiny">close</i></a>
       {{ instructor.last_name }},&nbsp;{{ instructor.first_name }}
     </li>
   `,

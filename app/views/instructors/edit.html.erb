@@ -1,5 +1,13 @@
-<%= render partial: "partials/form2_structure", locals: {object: @instructor, 
-                                                        type_of_form: "New Instructor",
+<div class="body-content">
+  <% if logged_in? && current_user.role?(:admin) %>
+    <div class="row">
+      <%= render :partial => "partials/back_button", locals: {model_name: "instructor", object: @instructor} %>
+    </div>
+  <% end %>
+
+  <%= render partial: "partials/form2_structure", locals: {object: @instructor, 
+                                                        type_of_form: "Edit Instructor",
                                                         fields1: "instructor_fields",
                                                         section_2: "User Account",
                                                         fields2: "user_fields"} %>
+</div>

@@ -1,10 +1,22 @@
 <h3><%= @student.proper_name %></h3>
 
-<h5>Basic Information</h5>
-<p><strong>Name: </strong><%= @student.proper_name %></p>
-<p><strong>Family: </strong><%= link_to @student.family.family_name, family_path(@student.family) %></p>
-<p><strong>Date of Birth: </strong><%= @student.date_of_birth %></p>
-<p><strong>Rating: </strong><%= @student.rating %></p>
-<p><strong>Active:</strong>
+<p class="section-area">
+  <div class="section-title">name</div>
+  <%= @student.proper_name %>
+</p>
+<p class="section-area">
+  <div class="section-title">Family</div>
+  <%= link_to @student.family.family_name, family_path(@student.family) %>
+</p>
+<p class="section-area">
+  <div class="section-title">Date of Birth</div>
+  <%= @student.date_of_birth.strftime("%m/%d/%y") %>
+</p>
+<p class="section-area">
+  <div class="section-title">Rating</div>
+  <%= @student.rating %>
+</p>
+<p class="section-area">
+  <div class="section-title">Active</div>
   <%= @student.active ? "Yes" : "No" %>
 </p>

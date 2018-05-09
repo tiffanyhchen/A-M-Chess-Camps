@@ -44,6 +44,7 @@ $(window).bind("load", function () {
 
 // Search submit on enter
 $(document).ready(function() {
+
   function submitForm() {
     document.getElementById("search").submit();
   }

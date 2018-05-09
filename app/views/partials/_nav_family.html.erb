@@ -3,10 +3,22 @@
     &nbsp&nbsp
     <a href="/" class="brand-logo">A&M Chess Camp</a>
     <ul class="right">
-      <li><%= link_to "Curriculums", curriculums_path %></li>
-      <li><%= link_to "Camps", camps_path %></li> 
-      <li><%= link_to "Locations", locations_path %></li> 
-      <li><%= link_to current_user.username, edit_user_path(current_user) %></li>
+      <span id="center-nav">
+        <li><%= link_to "Curriculums", curriculums_path %></li>
+        <li><%= link_to "Camps", camps_path %></li> 
+        <li><%= link_to "Locations", locations_path %></li> 
+        <span id="search-area">
+            <li id="search-section"><a href="#" class="open-search"><i class="material-icons">search</i></a>
+            </li>
+            <li>
+              <%= form_with url: search_path, method: :get, id: "search" do %>
+                  <%= text_field_tag 'query', '' %>
+                  <!-- submitting via js (press enter) so not using... -->
+                  <%# submit_tag('Find') %>
+              <% end %>
+            </li>
+          </span>
+      </span>
       <li><%= link_to "My Profile", edit_family_path(family_for(current_user)) %></li>
       <li><%= link_to 'Logout', logout_path %></li>
       <li>

@@ -1,4 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div class="body-content">
+  <div class="col s4">
+    <h3>Students</h3>
+    <% if logged_in? && ( current_user.role?(:admin) ) %>
+      <h6><%= link_to '+ NEW STUDENT', new_student_path %></h6>
+    <% end %>
+  </div>
+
+
 <%= render partial: "partials/structure1", locals: {model_name: "student", 
                                                          primary: "students_list", 
                                                          secondary: nil,
                                                          sidebar: nil} %>
+</div>

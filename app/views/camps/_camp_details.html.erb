@@ -54,7 +54,7 @@
   </div>
   <div class="card-action">
     <% if logged_in? && current_user.role?(:admin) %>
-      <%= link_to 'Edit', edit_camp_path(@camp), :class=>"btn waves-effect waves-light blue" %>
+      <%= link_to 'Edit', edit_camp_path(@camp), :class=>"btn waves-effect waves-light", :id=>"edit-button" %>
     <% end %>
   </div>
 </div>

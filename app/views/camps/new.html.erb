@@ -1,3 +1,7 @@
-<h1>New Camp</h1>
-
-<%= render 'form', camp: @camp %>
+<div class="body-content">
+  <div class="row">
+    <%= render :partial => "partials/back_button", locals: {model_name: "camp", object: @camp} %>
+  </div>
+  <h3>New Camp</h3>
+  <%= render 'form', camp: @camp %>
+</div>
