@@ -15,6 +15,7 @@ class Ability
       # can read curriculums, locations, and camps
       can :read, Curriculum
       can :read, Location
+      can :read, Instructor
       can :read, Camp
 
       # they can read their own profile

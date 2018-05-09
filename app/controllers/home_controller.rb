@@ -54,9 +54,10 @@ class HomeController < ApplicationController
     elsif logged_in? && current_user.role?(:parent)
       @parent = Family.where(user_id: current_user).first
       @your_students = @parent.students
-      @registrations
 
     elsif logged_in? && current_user.role?(:instructor)
+      @instructor = Instructor.where(user_id: current_user).first
+      @your_camps = @instructor.camps
     end
 
   end

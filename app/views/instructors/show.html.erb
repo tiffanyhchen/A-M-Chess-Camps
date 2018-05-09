@@ -1,6 +1,6 @@
 <div class="body-content">
   <div class="row">
-    <%= render :partial => "partials/back_button", locals: {model_name: "location", object: @location} %>
+    <%= render :partial => "partials/back_button", locals: {model_name: "instructor", object: @instructor} %>
   </div>
   <div class="row">
     <div class="col s4">
@@ -13,7 +13,11 @@
 </div>
 <div class="row">
   <div class="col s12">
-    <%= render :partial => "partials/object_options", locals: {model_name: "instructor", object: @instructor} %>
+    <% if logged_in? && ( current_user.role?(:instructor) && @instructor == Instructor.where(user_id: current_user).first ) %>
+      <%= link_to(edit_instructor_path(@instructor), class: 'waves-effect waves-light btn') do %>
+        &nbsp;<%= "Edit Profile" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

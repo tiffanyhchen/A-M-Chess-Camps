@@ -19,7 +19,9 @@
           <th>Name</th>
           <th>Phone</th>
           <th>Camps</th>
-          <th colspan="3"></th>
+          <% if logged_in? && current_user.role?(:admin) %>
+            <th colspan="3"></th>
+          <% end %>
         </tr>
       </thead>
 
@@ -29,7 +31,9 @@
             <td><%= link_to instructor.name, instructor %></td>
             <td><%= number_to_phone instructor.phone %></td>
             <td><%= instructor.camps.size %></td>
-            <td><%= link_to 'Edit', edit_instructor_path(instructor), :class=>"btn waves-effect waves-light" %></td>
+            <% if logged_in? && current_user.role?(:admin) %>
+              <td><%= link_to 'Edit', edit_instructor_path(instructor), :class=>"btn waves-effect waves-light" %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

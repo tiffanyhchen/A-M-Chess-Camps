@@ -2,6 +2,8 @@
   <%= render :partial => "admin_dashboard" %>
 <% elsif logged_in? && ( current_user.role?(:parent) ) %>
   <%= render :partial => "parent_dashboard" %>
+<% elsif logged_in? && ( current_user.role?(:instructor) ) %>
+  <%= render :partial => "instructor_dashboard" %>
 <% else %>
   <%= render :partial => "index_guest" %>
 <% end %>

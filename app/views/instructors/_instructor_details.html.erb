@@ -1,8 +1,7 @@
-<h3><%= @instructor.proper_name %></h3>
-
 <% unless @instructor.photo_url.nil? %>
-    <p><%= image_tag @instructor.photo_url %></p>
+    <p><%= image_tag @instructor.photo_url, class: "circle responsive-img" %></p>
 <% end %>
+<h3><%= @instructor.proper_name %></h3>
 <p class="section-area">
   <div class="section-title">username</div>
   <%= @instructor.username %>
